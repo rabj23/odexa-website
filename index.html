@@ -444,7 +444,7 @@ footer{
 .value h4{font-size:16px;margin-bottom:8px;}
 .value p{color:var(--muted);font-size:14px;}
 
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:600px;}
 .team-card{
   background:var(--paper-raised);
   border:1px solid var(--line);
@@ -595,7 +595,7 @@ footer{
       <div>
         <div class="eyebrow">Odoo consulting & development · since 2021</div>
         <h1>Odoo is what we do. <em>End&nbsp;to&nbsp;end.</em></h1>
-        <p class="lede">Consulting, development, infrastructure and AI, built around Odoo — with the same consulting-first approach extending into Shopify, Oracle ERP and AI model work as clients need it.</p>
+        <p class="lede">We've delivered work across Odoo, Shopify, Oracle ERP and AI — model development included. Odoo is where we run deepest and most often, but the others are real delivery experience, not just capability on paper.</p>
         <div class="cta-row">
           <a href="#/contact" class="btn btn-primary">Start a project →</a>
           <a href="#/services" class="btn btn-ghost">See what we do</a>
@@ -659,7 +659,7 @@ footer{
     <section>
       <div class="eyebrow">Services</div>
       <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:26ch;">Odoo, end to end.</h2>
-      <p style="color:var(--muted);max-width:60ch;margin-top:14px;font-size:16px;">Consulting, development, infrastructure and AI — that's almost all built around Odoo, where nearly all of our delivered work sits today. We take the same consulting-first approach to Shopify, Oracle ERP and AI model work when a client needs it, but Odoo is where the depth is.</p>
+      <p style="color:var(--muted);max-width:60ch;margin-top:14px;font-size:16px;">We've delivered projects across Odoo, Shopify, Oracle ERP and AI. Odoo is where we run deepest and most often — it's the practice everything else grew out of — but the other three are real delivery work, not services we've only listed.</p>
     </section>
     <section class="tight" style="padding-top:0;" id="servicesByCategory"></section>
 
@@ -714,7 +714,15 @@ footer{
     <section>
       <div class="eyebrow">About</div>
       <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:22ch;">Systems people, longer than we've been a company.</h2>
-      <p style="color:var(--muted);max-width:60ch;margin-top:16px;font-size:16px;">The work started in January 2021 — hands-on Odoo implementation, consulting and support. In August 2023, that experience turned into independent client work: taking on engagements directly, end to end, instead of as part of someone else's team. Odexa was formally registered as a company in 2026, putting a legal and operational structure around work that was already running. Odoo is still where nearly all of that work sits — we also take on Shopify, Oracle ERP and AI model work using the same approach, as clients need it.</p>
+      <p style="color:var(--muted);max-width:60ch;margin-top:16px;font-size:16px;">The work started in January 2021 — hands-on Odoo implementation, consulting and support. In August 2023, that experience turned into independent client work: taking on engagements directly, end to end, instead of as part of someone else's team. Odexa was formally registered as a company in 2026, putting a legal and operational structure around work that was already running. Odoo is still where we run deepest and most often — but Shopify, Oracle ERP and AI work are real delivery experience too, not just services on a list.</p>
+    </section>
+
+    <section class="tight">
+      <div class="sec-head"><div><div class="eyebrow">Our story</div><h2>How this actually started.</h2></div></div>
+      <div class="grid-2">
+        <p style="color:var(--muted);font-size:15.5px;max-width:56ch;">It didn't start with a business plan. Raj was working on Odoo implementations when he met Gor — and ended up working with him directly, on his own company's Odoo setup. Gor brought the business side: sales, growth, understanding what clients actually needed. Raj brought the technical depth. What began as a working relationship grew into a real partnership, and over time, into something closer to family.</p>
+        <p style="color:var(--muted);font-size:15.5px;max-width:56ch;">Odexa is what came out of that — Raj on technology, Gor on business and growth, neither one running it without the other.</p>
+      </div>
     </section>
 
     <section class="tight">
@@ -779,11 +787,10 @@ footer{
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow">Team</div><h2>The people behind Odexa.</h2></div></div>
       <div class="team-grid">
-        <div class="team-card"><div class="avatar">FA</div><h4>Founder &amp; Odoo Architect</h4><p>PROFILE COMING SOON</p></div>
-        <div class="team-card"><div class="avatar">LD</div><h4>Lead Developer</h4><p>PROFILE COMING SOON</p></div>
-        <div class="team-card"><div class="avatar">CS</div><h4>Consulting &amp; Client Success</h4><p>PROFILE COMING SOON</p></div>
+        <div class="team-card"><div class="avatar">R</div><h4>Raj</h4><p>Co-Founder — Technology</p></div>
+        <div class="team-card"><div class="avatar">G</div><h4>Gor</h4><p>Co-Founder — Business &amp; Growth</p></div>
       </div>
-      <p class="team-note">Full team bios and photos are on their way — check back soon.</p>
+      <p class="team-note">Photos and full bios coming soon.</p>
     </section>
   </section>
 
@@ -793,7 +800,7 @@ footer{
       <div class="eyebrow">Clientele</div>
       <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;">Real businesses, real Odoo systems.</h2>
       <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;">Five engagements across five industries and three regions — distribution, manufacturing, trade, retail and B2B/B2C wholesale. Client names are withheld here; detailed case studies and references are available on request.</p>
-      <p style="color:var(--muted);max-width:56ch;margin-top:10px;font-size:13.5px;font-family:var(--mono);">Note — all delivered engagements to date have been Odoo implementations. Shopify, Oracle ERP and AI model work are active practice areas, open for new engagements.</p>
+      <p style="color:var(--muted);max-width:56ch;margin-top:10px;font-size:13.5px;font-family:var(--mono);">Note — the case studies below are Odoo engagements. We've also delivered Shopify, Oracle ERP and AI work for other clients; those case studies are being prepared.</p>
     </section>
     <section class="tight" style="padding-top:0;">
       <div class="case-scroll" id="clientsGrid"></div>
@@ -916,8 +923,8 @@ const SERVICES = [
   // Odoo — core practice, standalone
   { cat:'Odoo — Our Core Practice', badge:'Most-run platform', icon:'<path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/>', title:'Odoo', desc:'Odoo is meant to be the backbone of a business — not a system you fight with every quarter. We treat implementation as the start, not the finish line: configuration, custom development and the years of running it after go-live.', bullets:['Custom module development','Workflow & approval automation','Reporting & dashboards','Version upgrades & migrations'] },
   // Also working with
-  { cat:'Also Working With', icon:'<path d="M6 8V6a4 4 0 0 1 8 0v2M4 8h12l1 12H3L4 8Z"/><circle cx="10" cy="12" r="1.2" fill="currentColor"/>', title:'Shopify', desc:'Storefronts and backend flows for merchants who need commerce and operations connected.', bullets:['Store setup & theme customization','Custom apps & checkout logic','Inventory & order sync','Odoo ↔ Shopify integration'] },
-  { cat:'Also Working With', icon:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/>', title:'Oracle ERP', desc:'Consulting and integration work for organizations running Oracle ERP alongside other systems.', bullets:['Functional consulting','Module configuration','Reporting & data extraction','Cross-system integration'] },
+  { cat:'Also Delivered In', icon:'<path d="M6 8V6a4 4 0 0 1 8 0v2M4 8h12l1 12H3L4 8Z"/><circle cx="10" cy="12" r="1.2" fill="currentColor"/>', title:'Shopify', desc:'Storefronts and backend flows delivered for merchants who needed commerce and operations connected.', bullets:['Store setup & theme customization','Custom apps & checkout logic','Inventory & order sync','Odoo ↔ Shopify integration'] },
+  { cat:'Also Delivered In', icon:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/>', title:'Oracle ERP', desc:'Consulting and integration work delivered for organizations running Oracle ERP alongside other systems.', bullets:['Functional consulting','Module configuration','Reporting & data extraction','Cross-system integration'] },
   // AI
   { cat:'AI', icon:'<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3.2"/>', title:'AI Integration', desc:'Bringing AI into daily operations — reading the data already inside your systems, not bolted on as a demo.', bullets:['Customer support & sales chatbots','Sales, purchase & inventory insights','Demand forecasting & anomaly alerts','Document & email data extraction'] },
   { cat:'AI', icon:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>', title:'AI Model Development', desc:'Building and fine-tuning models for specific business tasks, not just wiring up an off-the-shelf API.', bullets:['Custom & fine-tuned models','Model evaluation & benchmarking','Retrieval-augmented systems','Deployment & monitoring'] },
