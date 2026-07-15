@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Odexa — Odoo, Engineered End-to-End</title>
-<meta name="description" content="Odexa is an end-to-end Odoo partner covering consulting, development, server management, AI integration and cross-platform work since 2021.">
+<title>Odexa — Consulting-Led Systems & AI, Engineered End-to-End</title>
+<meta name="description" content="Odexa is a consulting-led systems partner covering Odoo (core practice), Shopify, Oracle ERP, AI integration and AI model development, plus the infrastructure and integrations around them, since 2021.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -285,6 +285,8 @@ section.tight{padding:64px 0;}
 
 /* service / card grids */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.grid-1{display:grid;grid-template-columns:1fr;}
+.grid-1 .card{max-width:560px;padding:32px;}
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
 .card{
   background:var(--paper-raised);
@@ -292,7 +294,22 @@ section.tight{padding:64px 0;}
   border-radius:12px;
   padding:26px;
   transition:border-color .15s ease, transform .15s ease;
+  position:relative;
 }
+.card.core{border-color:var(--ink);}
+.badge-core{
+  position:absolute; top:20px; right:20px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.04em;
+  color:var(--paper); background:var(--ink);
+  padding:4px 9px; border-radius:20px;
+}
+.cat-head{
+  display:flex; align-items:baseline; gap:12px;
+  margin:0 0 18px; padding-top:36px;
+}
+.cat-head:first-child{padding-top:0;}
+.cat-head h3{font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+.cat-head .line{flex:1; height:1px; background:var(--line);}
 .card:hover{border-color:var(--ink);transform:translateY(-2px);}
 .card .ico{
   width:38px;height:38px;
@@ -337,6 +354,54 @@ section.tight{padding:64px 0;}
 }
 .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);}
 
+/* CTA banner */
+.cta-banner{
+  background:var(--ink);
+  color:var(--paper);
+  border-radius:16px;
+  padding:56px 48px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.cta-banner h2{color:var(--paper);font-size:clamp(24px,3vw,32px);max-width:22ch;}
+.cta-banner p{color:#B9BCC2;margin-top:10px;max-width:44ch;font-size:15px;}
+.cta-banner .btn-primary{background:var(--amber);color:var(--ink);}
+.cta-banner .btn-primary:hover{background:var(--amber-soft);}
+
+/* case study carousel */
+.case-scroll{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:12px;
+  margin:0 -32px;
+  padding-left:32px;
+  padding-right:32px;
+}
+.case-scroll::-webkit-scrollbar{height:6px;}
+.case-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;}
+.case-card{
+  scroll-snap-align:start;
+  flex:0 0 300px;
+  background:var(--paper-raised);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:220px;
+}
+.case-card .idx{font-family:var(--mono);font-size:11px;color:var(--amber);}
+.case-card h3{font-size:18px;margin:14px 0 8px;line-height:1.25;}
+.case-card .loc2{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:12px;display:block;}
+.case-card p{color:var(--muted);font-size:13.5px;}
+.case-card .mods{font-family:var(--mono);font-size:11px;color:var(--teal);margin-top:14px;padding-top:14px;border-top:1px solid var(--line);}
+
 /* footer */
 footer{
   border-top:1px solid var(--line);
@@ -352,7 +417,7 @@ footer{
 .footer-top h3{font-size:24px;max-width:16ch;}
 .footer-cols{display:flex;gap:56px;flex-wrap:wrap;}
 .footer-col span{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:12px;}
-.footer-col a{display:block;font-size:14px;padding:6px 0;color:var(--ink);}
+.footer-col a, .footer-col p{display:block;font-size:14px;padding:6px 0;color:var(--ink);}
 .footer-col a:hover{color:var(--amber);}
 .footer-bottom{
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
@@ -528,9 +593,9 @@ footer{
   <section class="view" id="view-home">
     <div class="hero">
       <div>
-        <div class="eyebrow">Odoo partner · since 2021</div>
-        <h1>Odoo, engineered <em>end&nbsp;to&nbsp;end.</em></h1>
-        <p class="lede">From the first discovery call to the server it runs on, we plan, build and operate Odoo systems — plus the AI, apps and integrations that sit around them.</p>
+        <div class="eyebrow">Odoo consulting & development · since 2021</div>
+        <h1>Odoo is what we do. <em>End&nbsp;to&nbsp;end.</em></h1>
+        <p class="lede">Consulting, development, infrastructure and AI, built around Odoo — with the same consulting-first approach extending into Shopify, Oracle ERP and AI model work as clients need it.</p>
         <div class="cta-row">
           <a href="#/contact" class="btn btn-primary">Start a project →</a>
           <a href="#/services" class="btn btn-ghost">See what we do</a>
@@ -551,16 +616,16 @@ footer{
 
     <div class="statbar reveal">
       <div class="stat"><div class="num">2021</div><div class="lbl">Odoo experience began</div></div>
-      <div class="stat"><div class="num">2023</div><div class="lbl">Odexa founded</div></div>
-      <div class="stat"><div class="num">8</div><div class="lbl">Service disciplines</div></div>
-      <div class="stat"><div class="num">5+</div><div class="lbl">Industries served</div></div>
+      <div class="stat"><div class="num">2023</div><div class="lbl">Independent client work began</div></div>
+      <div class="stat"><div class="num">2026</div><div class="lbl">Odexa formally registered</div></div>
+      <div class="stat"><div class="num">5+</div><div class="lbl">Client engagements</div></div>
     </div>
 
     <section>
       <div class="sec-head">
         <div>
           <div class="eyebrow">What we do</div>
-          <h2>One partner, the whole Odoo lifecycle.</h2>
+          <h2>Odoo, end to end — plus the systems around it.</h2>
         </div>
         <a href="#/services" class="preview-link">All services →</a>
       </div>
@@ -571,16 +636,20 @@ footer{
       <div class="sec-head">
         <div>
           <div class="eyebrow">Clientele</div>
-          <h2>Industries we've built for.</h2>
+          <h2>Discover our work.</h2>
         </div>
-        <a href="#/clients" class="preview-link">See the work →</a>
+        <a href="#/clients" class="preview-link">All engagements →</a>
       </div>
-      <div class="strip reveal">
-        <div class="pill"><span class="dot"></span>IT Distribution — Belgium</div>
-        <div class="pill"><span class="dot"></span>Coffee Manufacturing — Netherlands</div>
-        <div class="pill"><span class="dot"></span>Fruit Import-Export — India / Vietnam</div>
-        <div class="pill"><span class="dot"></span>Ceramic B2B &amp; B2C — India</div>
-        <div class="pill"><span class="dot"></span>Consumer Electronics Retail — UAE</div>
+      <div class="case-scroll reveal" id="homeCaseScroll"></div>
+    </section>
+
+    <section class="tight">
+      <div class="cta-banner">
+        <div>
+          <h2>Let's talk about your Odoo.</h2>
+          <p>No strings attached — just a straight conversation about where your systems stand today and what we'd do about it.</p>
+        </div>
+        <a href="#/contact" class="btn btn-primary">Start a project →</a>
       </div>
     </section>
   </section>
@@ -589,11 +658,54 @@ footer{
   <section class="view" id="view-services">
     <section>
       <div class="eyebrow">Services</div>
-      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:22ch;">Eight disciplines. One Odoo system.</h2>
-      <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;">We work across the whole lifecycle — before a project starts, while it's being built, and long after it's live.</p>
+      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:26ch;">Odoo, end to end.</h2>
+      <p style="color:var(--muted);max-width:60ch;margin-top:14px;font-size:16px;">Consulting, development, infrastructure and AI — that's almost all built around Odoo, where nearly all of our delivered work sits today. We take the same consulting-first approach to Shopify, Oracle ERP and AI model work when a client needs it, but Odoo is where the depth is.</p>
     </section>
-    <section class="tight" style="padding-top:0;">
-      <div class="grid-3" id="allServicesGrid"></div>
+    <section class="tight" style="padding-top:0;" id="servicesByCategory"></section>
+
+    <section class="tight">
+      <div class="sec-head"><div><div class="eyebrow">How an engagement runs</div><h2>Five stages, one continuous handoff.</h2></div><p>Not every project needs all five — a support retainer might start at stage 4. But this is the order work moves through when we run it end to end.</p></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="yr">01 — Discover</div><div><h4>Requirement gathering &amp; analysis</h4><p>Workshops with the people who'll actually use the system, a review of current tools and data, and a written gap-fit analysis against standard Odoo before any custom work is proposed.</p></div></div>
+        <div class="tl-item"><div class="yr">02 — Scope</div><div><h4>Solution design &amp; proposal</h4><p>A concrete scope: which modules, what's configured vs. custom-built, which systems need to integrate, and what the environment (cloud or on-premise) needs to look like — with effort and timeline attached.</p></div></div>
+        <div class="tl-item"><div class="yr">03 — Build</div><div><h4>Configuration &amp; development</h4><p>Module setup, custom development, integrations and any AI components are built against the agreed scope, with staged environments so nothing hits production untested.</p></div></div>
+        <div class="tl-item"><div class="yr">04 — Launch</div><div><h4>Migration, training &amp; go-live</h4><p>Data migration, user training, and a go-live plan with a rollback path — go-live is treated as an operational event, not a handover email.</p></div></div>
+        <div class="tl-item"><div class="yr">05 — Operate</div><div><h4>Support, hosting &amp; iteration</h4><p>Server monitoring, patching and backups, plus a standing channel for fixes, small enhancements and the next round of requirements as the business changes.</p></div></div>
+      </div>
+    </section>
+
+    <section class="tight">
+      <div class="sec-head"><div><div class="eyebrow">Engagement models</div><h2>How we're brought in.</h2></div></div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg></div>
+          <h3>Fixed-scope project</h3>
+          <p>A defined implementation, migration or integration with a fixed scope, timeline and cost — best when requirements are already clear.</p>
+          <ul><li>Scoped deliverables</li><li>Milestone-based delivery</li><li>Fixed or capped pricing</li></ul>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Managed support retainer</h3>
+          <p>Ongoing hosting, monitoring and a fixed monthly allowance of development hours for fixes, tweaks and small features.</p>
+          <ul><li>Server &amp; uptime monitoring</li><li>Monthly hours pool</li><li>Priority response times</li></ul>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><path d="M2 21v-1a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v1"/><path d="M16 3.2a3 3 0 0 1 0 5.6M20 21v-1a6 6 0 0 0-4-5.7"/></svg></div>
+          <h3>Embedded / staff augmentation</h3>
+          <p>A consultant or developer working inside your team on a rolling basis — for businesses running large or long-lived system programs.</p>
+          <ul><li>Dedicated capacity</li><li>Works inside your workflows</li><li>Scales up or down monthly</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="tight">
+      <div class="cta-banner">
+        <div>
+          <h2>Not sure which of this you need?</h2>
+          <p>Tell us where things stand and we'll tell you honestly — sometimes it's a two-week fix, not a six-month rebuild.</p>
+        </div>
+        <a href="#/contact" class="btn btn-primary">Talk it through →</a>
+      </div>
     </section>
   </section>
 
@@ -601,8 +713,8 @@ footer{
   <section class="view" id="view-about">
     <section>
       <div class="eyebrow">About</div>
-      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;">Odoo people, since before we had a company.</h2>
-      <p style="color:var(--muted);max-width:60ch;margin-top:16px;font-size:16px;">Odexa started as hands-on Odoo work in January 2021 — implementations, consulting and support inside the Odoo ecosystem. In August 2023, that experience became a company of its own: one built to take on client work directly, end to end.</p>
+      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:22ch;">Systems people, longer than we've been a company.</h2>
+      <p style="color:var(--muted);max-width:60ch;margin-top:16px;font-size:16px;">The work started in January 2021 — hands-on Odoo implementation, consulting and support. In August 2023, that experience turned into independent client work: taking on engagements directly, end to end, instead of as part of someone else's team. Odexa was formally registered as a company in 2026, putting a legal and operational structure around work that was already running. Odoo is still where nearly all of that work sits — we also take on Shopify, Oracle ERP and AI model work using the same approach, as clients need it.</p>
     </section>
 
     <section class="tight">
@@ -618,7 +730,11 @@ footer{
         </div>
         <div class="tl-item">
           <div class="yr">Aug 2023</div>
-          <div><h4>Odexa is founded</h4><p>That experience becomes its own company — taking on client engagements directly, end to end, under one name.</p></div>
+          <div><h4>Independent client work begins</h4><p>Engagements are taken on directly for the first time — consulting, development and support delivered end to end, under our own name rather than as part of another team.</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="yr">2026</div>
+          <div><h4>Odexa is formally registered</h4><p>The company is incorporated, giving already-running client work a proper legal, financial and operational structure to grow from.</p></div>
         </div>
         <div class="tl-item">
           <div class="yr">Today</div>
@@ -631,14 +747,23 @@ footer{
       <div class="grid-2">
         <div>
           <div class="eyebrow">Goal</div>
-          <h3 style="font-size:22px;margin-top:12px;">Be the last Odoo partner a client needs to hire.</h3>
-          <p style="color:var(--muted);font-size:15px;margin-top:12px;">Not a vendor for one module or one migration — a long-term technical partner who understands the business behind the system, and keeps it running as that business changes.</p>
+          <h3 style="font-size:22px;margin-top:12px;">Be the last systems partner a client needs to hire.</h3>
+          <p style="color:var(--muted);font-size:15px;margin-top:12px;">Not a vendor for one platform or one migration — a long-term technical partner who understands the business behind the system, and keeps it running as that business changes and grows across platforms.</p>
         </div>
         <div>
           <div class="eyebrow">Inspiration</div>
           <h3 style="font-size:22px;margin-top:12px;">Odoo's own idea: modular, but whole.</h3>
           <p style="color:var(--muted);font-size:15px;margin-top:12px;">Odoo's strength is modules that snap together into one system. We try to work the same way — consulting, code, servers and AI as separate disciplines that add up to a single, coherent operation.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="tight">
+      <div class="sec-head"><div><div class="eyebrow">In practice</div><h2>What "end-to-end" actually covers.</h2></div><p>The same team stays involved from the first workshop through years of running the system — nothing gets handed off between separate vendors.</p></div>
+      <div class="grid-3">
+        <div class="card"><h3 style="font-size:16px;">Before the build</h3><p>Requirement workshops, current-state analysis, and a written gap-fit assessment against standard Odoo — so the scope is based on how the business actually runs.</p></div>
+        <div class="card"><h3 style="font-size:16px;">During the build</h3><p>Configuration, custom development, integrations and infrastructure set up in parallel, tested in staged environments before anything reaches production.</p></div>
+        <div class="card"><h3 style="font-size:16px;">After go-live</h3><p>Server monitoring, backups, upgrades and a standing support channel — the team that built the system is the same one keeping it running.</p></div>
       </div>
     </section>
 
@@ -667,10 +792,20 @@ footer{
     <section>
       <div class="eyebrow">Clientele</div>
       <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;">Real businesses, real Odoo systems.</h2>
-      <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;">A sample of the industries and geographies we've worked across. Full client case studies are being prepared — get in touch for references.</p>
+      <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;">Five engagements across five industries and three regions — distribution, manufacturing, trade, retail and B2B/B2C wholesale. Client names are withheld here; detailed case studies and references are available on request.</p>
+      <p style="color:var(--muted);max-width:56ch;margin-top:10px;font-size:13.5px;font-family:var(--mono);">Note — all delivered engagements to date have been Odoo implementations. Shopify, Oracle ERP and AI model work are active practice areas, open for new engagements.</p>
     </section>
     <section class="tight" style="padding-top:0;">
-      <div class="grid-2" id="clientsGrid"></div>
+      <div class="case-scroll" id="clientsGrid"></div>
+    </section>
+    <section class="tight">
+      <div class="cta-banner">
+        <div>
+          <h2>Want the detailed version of one of these?</h2>
+          <p>Ask and we'll walk you through the actual scope, timeline and decisions — references available on request.</p>
+        </div>
+        <a href="#/contact" class="btn btn-primary">Get in touch →</a>
+      </div>
     </section>
   </section>
 
@@ -713,10 +848,12 @@ footer{
             <div class="field">
               <label for="fservice">What do you need?</label>
               <select id="fservice">
-                <option>Odoo Consulting</option>
-                <option>Odoo Development</option>
-                <option>Server Management</option>
+                <option>Odoo Consulting / Development</option>
+                <option>Shopify</option>
+                <option>Oracle ERP</option>
                 <option>AI Integration</option>
+                <option>AI Model Development</option>
+                <option>Server Management</option>
                 <option>Integrations</option>
                 <option>App Development</option>
                 <option>Website Development</option>
@@ -741,7 +878,7 @@ footer{
 <footer>
   <div class="wrap">
     <div class="footer-top">
-      <h3>Ready to put Odoo to work?</h3>
+      <h3>Ready to put your systems to work?</h3>
       <div class="footer-cols">
         <div class="footer-col">
           <span>Site</span>
@@ -756,11 +893,16 @@ footer{
           <a href="mailto:hello@odexa.eu">hello@odexa.eu</a>
           <a href="#/contact">+32 000 00 00 00</a>
         </div>
+        <div class="footer-col">
+          <span>Where we work</span>
+          <p>Remote-first</p>
+          <p>Clients in Europe, the Middle East &amp; Asia</p>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="yr"></span> Odexa — Odoo, engineered end-to-end.</span>
-      <span>Odoo experience since 2021 · Company founded 2023</span>
+      <span>© <span id="yr"></span> Odexa — Consulting-led systems &amp; AI, engineered end-to-end.</span>
+      <span>Odoo experience since 2021 · Independent since 2023 · Registered 2026</span>
     </div>
   </div>
 </footer>
@@ -768,28 +910,37 @@ footer{
 <script>
 /* ============ DATA ============ */
 const SERVICES = [
-  { icon:'<path d="M4 6h16M4 12h16M4 18h10"/>', title:'Odoo Consulting', desc:'Strategic guidance to get the most out of your Odoo investment.', bullets:['Module selection & roadmap','Best-practice process design','Ongoing advisory'] },
-  { icon:'<circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/>', title:'Pre-Sales & Discovery', desc:'Requirement gathering, analysis and system consulting before a module is touched.', bullets:['Stakeholder workshops','Gap-fit analysis','Solution proposals & scoping'] },
-  { icon:'<path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/>', title:'Odoo Development', desc:'Custom modules, workflows and reports built for how you actually work.', bullets:['Custom module development','Workflow automation','Reporting & dashboards'] },
-  { icon:'<rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><circle cx="8" cy="7" r=".6" fill="currentColor"/><circle cx="8" cy="17" r=".6" fill="currentColor"/>', title:'Server Management', desc:'Odoo runs where you need it — cloud or on-premise — and keeps running.', bullets:['Cloud hosting & deployment','On-premise setup','Monitoring, backups & upgrades'] },
-  { icon:'<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3.2"/>', title:'AI Integration', desc:'Bringing AI into daily operations — not as a gimmick, as a working tool.', bullets:['Support & sales chatbots','Sales / purchase / inventory insights','Predictive & anomaly alerts'] },
-  { icon:'<circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.2 10.6 16M16.4 7.2 13.4 16M8.2 6h7.6"/>', title:'Cross-Platform Integration', desc:'Odoo talking to the rest of your stack, cleanly and reliably.', bullets:['Third-party API integrations','E-commerce & marketplace sync','Data migration pipelines'] },
-  { icon:'<rect x="6" y="2.5" width="12" height="19" rx="2.2"/><path d="M11 18.2h2"/>', title:'App Development', desc:'Mobile and custom applications that extend Odoo beyond the browser.', bullets:['Mobile apps for Odoo workflows','Custom internal tools','Barcode / scanner integrations'] },
-  { icon:'<rect x="3" y="4.5" width="18" height="15" rx="1.6"/><path d="M3 8.5h18M6.4 6.4h.01"/>', title:'Website Development', desc:'Websites and portals connected to the systems behind them.', bullets:['Corporate & e-commerce sites','Customer portals','Odoo Website module builds'] },
+  // Consulting & Advisory
+  { cat:'Consulting & Advisory', icon:'<circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/>', title:'Pre-Sales & Discovery', desc:'Requirement gathering, analysis and system consulting before a platform is even chosen.', bullets:['Stakeholder workshops','Current-state process mapping','Gap-fit analysis','Solution proposals & scoping'] },
+  { cat:'Consulting & Advisory', icon:'<path d="M4 6h16M4 12h16M4 18h10"/>', title:'Solution Consulting', desc:'Independent advice on which system fits — ERP, commerce platform or a mix — and how it should be structured.', bullets:['Platform selection & roadmap','Best-practice process design','Health checks on existing systems','Ongoing advisory'] },
+  // Odoo — core practice, standalone
+  { cat:'Odoo — Our Core Practice', badge:'Most-run platform', icon:'<path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/>', title:'Odoo', desc:'Odoo is meant to be the backbone of a business — not a system you fight with every quarter. We treat implementation as the start, not the finish line: configuration, custom development and the years of running it after go-live.', bullets:['Custom module development','Workflow & approval automation','Reporting & dashboards','Version upgrades & migrations'] },
+  // Also working with
+  { cat:'Also Working With', icon:'<path d="M6 8V6a4 4 0 0 1 8 0v2M4 8h12l1 12H3L4 8Z"/><circle cx="10" cy="12" r="1.2" fill="currentColor"/>', title:'Shopify', desc:'Storefronts and backend flows for merchants who need commerce and operations connected.', bullets:['Store setup & theme customization','Custom apps & checkout logic','Inventory & order sync','Odoo ↔ Shopify integration'] },
+  { cat:'Also Working With', icon:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/>', title:'Oracle ERP', desc:'Consulting and integration work for organizations running Oracle ERP alongside other systems.', bullets:['Functional consulting','Module configuration','Reporting & data extraction','Cross-system integration'] },
+  // AI
+  { cat:'AI', icon:'<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3.2"/>', title:'AI Integration', desc:'Bringing AI into daily operations — reading the data already inside your systems, not bolted on as a demo.', bullets:['Customer support & sales chatbots','Sales, purchase & inventory insights','Demand forecasting & anomaly alerts','Document & email data extraction'] },
+  { cat:'AI', icon:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>', title:'AI Model Development', desc:'Building and fine-tuning models for specific business tasks, not just wiring up an off-the-shelf API.', bullets:['Custom & fine-tuned models','Model evaluation & benchmarking','Retrieval-augmented systems','Deployment & monitoring'] },
+  // Infrastructure & Extension
+  { cat:'Infrastructure & Extension', icon:'<rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><circle cx="8" cy="7" r=".6" fill="currentColor"/><circle cx="8" cy="17" r=".6" fill="currentColor"/>', title:'Server Management', desc:'Systems run where you need them — cloud or on-premise — with the monitoring to keep them running.', bullets:['Cloud hosting & deployment','On-premise setup & hardening','Monitoring, backups & disaster recovery','Performance tuning & upgrades'] },
+  { cat:'Infrastructure & Extension', icon:'<circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.2 10.6 16M16.4 7.2 13.4 16M8.2 6h7.6"/>', title:'Cross-Platform Integration', desc:'Odoo, Shopify, Oracle ERP and everything else talking to each other, cleanly and reliably.', bullets:['Third-party & custom API integrations','E-commerce & marketplace sync','Payment gateway & courier integrations','Data migration & sync pipelines'] },
+  { cat:'Infrastructure & Extension', icon:'<rect x="6" y="2.5" width="12" height="19" rx="2.2"/><path d="M11 18.2h2"/>', title:'App Development', desc:'Mobile and custom applications that extend your systems beyond the browser.', bullets:['Mobile apps for business workflows','Custom internal tools','Barcode / scanner & warehouse apps','Offline-capable field apps'] },
+  { cat:'Infrastructure & Extension', icon:'<rect x="3" y="4.5" width="18" height="15" rx="1.6"/><path d="M3 8.5h18M6.4 6.4h.01"/>', title:'Website Development', desc:'Websites and portals connected to the systems behind them, so content and commerce stay in sync.', bullets:['Corporate & e-commerce sites','Customer & vendor self-service portals','CMS & headless builds','SEO-ready technical setup'] },
 ];
 
 const CLIENTS = [
-  { icon:'<rect x="3" y="8" width="18" height="12" rx="1.4"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 13h18"/>', title:'IT Distribution', loc:'Lommel, Belgium', desc:'Streamlined multi-warehouse inventory, sales and purchase flows on Odoo for a Belgium-based IT distributor.' },
-  { icon:'<path d="M6 9h11l-1 9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 9Z"/><path d="M17 9a3 3 0 0 0 3-3h-1"/><path d="M9 6V4M12 6V3M15 6V4"/>', title:'Coffee Manufacturing', loc:'Amsterdam, Netherlands', desc:'Connected production, inventory and quality-control workflows for an Amsterdam-based coffee manufacturer.' },
-  { icon:'<path d="M12 3c3 2 5 5 5 9a5 5 0 0 1-10 0c0-4 2-7 5-9Z"/><path d="M12 12v8"/>', title:'Fruit Import–Export', loc:'India ↔ Vietnam', desc:'Cross-border trade, logistics and stock tracking for a fruit import-export operation spanning India and Vietnam.' },
-  { icon:'<path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M4 7l8 5 8-5M12 12v10"/>', title:'Ceramic B2B & B2C', loc:'India', desc:'Unified wholesale and retail sales channels on a single Odoo instance for an Indian ceramics manufacturer.' },
-  { icon:'<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.2h2"/>', title:'Consumer Electronics Retail', loc:'United Arab Emirates', desc:'Point-of-sale, inventory and purchase management set up for a UAE-based phone retailer.' },
+  { icon:'<rect x="3" y="8" width="18" height="12" rx="1.4"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 13h18"/>', headline:'One inventory view across every warehouse', title:'IT Distribution', loc:'Lommel, Belgium', modules:'Inventory · Sales · Purchase', desc:'A Belgium-based IT distributor moving stock across several warehouses needed one accurate view of inventory instead of separate spreadsheets per site. We consolidated sales, purchase and multi-warehouse inventory into a single Odoo instance, with reordering rules tied to real stock levels rather than manual checks.' },
+  { icon:'<path d="M6 9h11l-1 9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 9Z"/><path d="M17 9a3 3 0 0 0 3-3h-1"/><path d="M9 6V4M12 6V3M15 6V4"/>', headline:'Batch-to-bean traceability, built into production', title:'Coffee Manufacturing', loc:'Amsterdam, Netherlands', modules:'Manufacturing · Quality · Inventory', desc:'An Amsterdam coffee manufacturer needed production batches, raw-material stock and quality checks tracked in one place rather than on paper logs. We set up Odoo Manufacturing with linked quality checkpoints, so each batch is traceable back to its raw material lot.' },
+  { icon:'<path d="M12 3c3 2 5 5 5 9a5 5 0 0 1-10 0c0-4 2-7 5-9Z"/><path d="M12 12v8"/>', headline:'Customs-to-warehouse visibility across two countries', title:'Fruit Import–Export', loc:'India ↔ Vietnam', modules:'Purchase · Inventory · Logistics', desc:'A fruit import-export operation trading between India and Vietnam needed shipment, customs and stock-in-transit visibility across borders. We configured purchase and inventory flows to track goods from origin to warehouse, with landed-cost tracking built into each shipment.' },
+  { icon:'<path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M4 7l8 5 8-5M12 12v10"/>', headline:'Wholesale and retail, one shared stock room', title:'Ceramic B2B & B2C', loc:'India', modules:'Sales · eCommerce · Accounting', desc:'An Indian ceramics manufacturer sold to both retail customers and wholesale dealers through disconnected systems. We unified both channels — wholesale pricing rules and a retail-facing storefront — onto one Odoo instance with shared inventory and accounting.' },
+  { icon:'<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.2h2"/>', headline:'Till, stock and purchasing, finally talking', title:'Consumer Electronics Retail', loc:'United Arab Emirates', modules:'Point of Sale · Inventory · Purchase', desc:'A UAE-based phone retailer needed in-store sales, stock and supplier purchasing connected instead of reconciled by hand at closing time. We deployed Odoo Point of Sale linked directly to inventory and purchasing, so every sale updates stock and triggers reorder points automatically.' },
 ];
 
 function svg(paths){ return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`; }
 
 function renderServiceCard(s){
-  return `<div class="card">
+  return `<div class="card${s.badge?' core':''}">
+    ${s.badge?`<span class="badge-core">${s.badge}</span>`:''}
     <div class="ico">${svg(s.icon)}</div>
     <h3>${s.title}</h3>
     <p>${s.desc}</p>
@@ -797,15 +948,37 @@ function renderServiceCard(s){
   </div>`;
 }
 
-function renderClientCard(c){
-  return `<div class="client-card">
-    <div class="ico">${svg(c.icon)}</div>
-    <div><h3>${c.title}</h3><span class="loc">${c.loc}</span><p>${c.desc}</p></div>
+function renderClientCard(c, i){
+  return `<div class="case-card">
+    <div>
+      <span class="idx">0${i+1}</span>
+      <h3>${c.headline}</h3>
+      <span class="loc2">${c.title} · ${c.loc}</span>
+      <p>${c.desc}</p>
+    </div>
+    <div class="mods">${c.modules}</div>
   </div>`;
 }
 
-document.getElementById('allServicesGrid').innerHTML = SERVICES.map(renderServiceCard).join('');
-document.getElementById('homeServicesPreview').innerHTML = SERVICES.slice(0,3).map(renderServiceCard).join('');
+// group services by category, preserving first-seen order
+const categories = [];
+SERVICES.forEach(s=>{ if(!categories.includes(s.cat)) categories.push(s.cat); });
+document.getElementById('servicesByCategory').innerHTML = categories.map(cat=>{
+  const items = SERVICES.filter(s=>s.cat===cat);
+  const gridClass = items.length===1 ? 'grid-1' : 'grid-3';
+  return `
+  <div class="cat-head"><h3>${cat}</h3><div class="line"></div></div>
+  <div class="${gridClass}" style="margin-bottom:8px;">${items.map(renderServiceCard).join('')}</div>
+`;
+}).join('');
+
+document.getElementById('homeServicesPreview').innerHTML = [
+  SERVICES.find(s=>s.title==='Solution Consulting'),
+  SERVICES.find(s=>s.title==='Odoo'),
+  SERVICES.find(s=>s.title==='AI Model Development'),
+].map(renderServiceCard).join('');
+
+document.getElementById('homeCaseScroll').innerHTML = CLIENTS.map(renderClientCard).join('');
 document.getElementById('clientsGrid').innerHTML = CLIENTS.map(renderClientCard).join('');
 document.getElementById('yr').textContent = new Date().getFullYear();
 
