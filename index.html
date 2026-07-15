@@ -920,30 +920,15 @@ footer{
             <div class="field"><label for="fname">Name</label><input id="fname" type="text" required></div>
             <div class="field"><label for="femail">Email</label><input id="femail" type="email" required></div>
           </div>
-          <div class="field-row">
-            <div class="field"><label for="fcompany">Company</label><input id="fcompany" type="text"></div>
-            <div class="field">
-              <label for="fservice">What do you need?</label>
-              <select id="fservice">
-                <option>Odoo Consulting / Development</option>
-                <option>Shopify</option>
-                <option>Zoho</option>
-                <option>AI Engineering: Integration</option>
-                <option>AI Engineering: Model Development</option>
-                <option>Server Management</option>
-                <option>Integrations</option>
-                <option>App Development</option>
-                <option>Website Development</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
+          <div class="field">
+            <label for="fcompany">Company</label>
+            <input id="fcompany" type="text">
           </div>
           <div class="field">
             <label for="fmsg">Tell us about the project</label>
             <textarea id="fmsg" required placeholder="Current setup, goals, timeline, whatever you've got."></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Send message →</button>
-          <p class="form-note">This form is a front-end draft. Connect it to your inbox or CRM before going live.</p>
           <div class="toast" id="formToast">Thanks, your message has been noted. We'll be in touch.</div>
         </form>
       </div>
