@@ -705,12 +705,33 @@ footer{
     <section class="tight">
       <div class="sec-head">
         <div>
-          <div class="eyebrow">Clientele</div>
-          <h2>Discover our work.</h2>
+          <div class="eyebrow">How this works</div>
+          <h2>You don't pay until it's running.</h2>
         </div>
-        <a href="#/clients" class="preview-link">All engagements →</a>
+        <a href="#/contact" class="preview-link">Get a scope check →</a>
       </div>
-      <div class="case-scroll reveal" id="homeCaseScroll"></div>
+      <p style="color:var(--muted);max-width:62ch;margin-top:-18px;margin-bottom:28px;font-size:15.5px;">Tell us the problem. We design it, build it, and hand it over, then you pay monthly, not by the hour, and not for a project that might never launch. First year's paid upfront so the build actually gets built. Cancel any time after that.</p>
+      <div class="grid-3 reveal">
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Pay per hour</h3>
+          <p>Straightforward hourly billing for advisory, fixes, or ad hoc development. No fixed scope required.</p>
+          <ul><li>Time-tracked work</li><li>Invoiced monthly</li><li>No minimum commitment</li></ul>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg></div>
+          <h3>Pay per project</h3>
+          <p>A defined scope, timeline and fixed price agreed upfront. Best when requirements are already clear.</p>
+          <ul><li>Scoped deliverables</li><li>Milestone-based delivery</li><li>Fixed price agreed upfront</li></ul>
+        </div>
+        <div class="card core">
+          <span class="badge-core">The idea we believe in</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M20 10a8 8 0 0 0-14.9-3M4 14a8 8 0 0 0 14.9 3"/></svg></div>
+          <h3>Zero upfront, pay monthly</h3>
+          <p>You tell us the problem. We build it and hand it over, then you pay a monthly subscription for it, not a project invoice.</p>
+          <ul><li>No upfront build cost</li><li>First year billed annually, to cover the build</li></ul>
+        </div>
+      </div>
     </section>
 
     <section class="tight">
@@ -763,7 +784,7 @@ footer{
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M20 10a8 8 0 0 0-14.9-3M4 14a8 8 0 0 0 14.9 3"/></svg></div>
           <h3>Zero upfront, pay monthly</h3>
           <p>Tell us the problem. We design, build and hand over the solution, then you pay a monthly subscription for it, not a project invoice.</p>
-          <ul><li>No upfront build cost</li><li>First year billed annually, to cover the build</li><li>Access pauses if payment lapses</li></ul>
+          <ul><li>No upfront build cost</li><li>First year billed annually, to cover the build</li></ul>
         </div>
       </div>
     </section>
@@ -1059,7 +1080,6 @@ document.getElementById('homeServicesPreview').innerHTML = [
   SERVICES.find(s=>s.title==='AI Model Development'),
 ].map(renderServiceCard).join('');
 
-document.getElementById('homeCaseScroll').innerHTML = CLIENTS.map(renderClientCard).join('');
 document.getElementById('clientsGrid').innerHTML = CLIENTS.map(renderClientCard).join('');
 document.getElementById('yr').textContent = new Date().getFullYear();
 
