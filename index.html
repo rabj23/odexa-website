@@ -78,6 +78,14 @@ button{font-family:inherit;cursor:pointer;}
 }
 
 /* ============ NAV ============ */
+.scroll-progress{
+  position:fixed; top:0; left:0; height:3px;
+  background:var(--amber);
+  z-index:100;
+  width:0%;
+  transition:width .1s ease-out;
+}
+
 header.site-nav{
   position:sticky;
   top:0;
@@ -488,16 +496,6 @@ footer{
 .flow-row{display:flex;align-items:stretch;gap:0;}
 .flow-row .card{flex:1;}
 
-.risk-scale{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  max-width:520px;margin:0 auto 6px;padding:0 6px;
-}
-.risk-scale .bar-col{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;}
-.risk-scale .bar{width:36px;border-radius:6px 6px 0 0;background:var(--amber-soft);}
-.risk-scale .bar-col.mid .bar{background:var(--amber);opacity:.55;}
-.risk-scale .bar-col.hi .bar{background:var(--amber);}
-.risk-scale .bar-label{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-align:center;max-width:100px;}
-
 .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .value{padding:22px 0;border-top:1px solid var(--line);}
 .value h4{font-size:16px;margin-bottom:8px;}
@@ -705,6 +703,8 @@ footer{
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <header class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="#/home" class="brand">
@@ -792,11 +792,6 @@ footer{
         <a href="#/contact" class="preview-link" data-i18n="homePriceLink">Get a scope check →</a>
       </div>
       <p style="color:var(--muted);max-width:62ch;margin-top:-18px;margin-bottom:28px;font-size:15.5px;" data-i18n="homePriceIntro">Tell us the problem. We design it, build it, and hand it over, then you pay monthly, not by the hour, and not for a project that might never launch.</p>
-      <div class="risk-scale" aria-hidden="true" style="margin-bottom:28px;">
-        <div class="bar-col"><div class="bar" style="height:34px;"></div><span class="bar-label" data-i18n="riskLow">We carry less risk</span></div>
-        <div class="bar-col mid"><div class="bar" style="height:58px;"></div><span class="bar-label" data-i18n="riskMid">Shared, fixed upfront</span></div>
-        <div class="bar-col hi"><div class="bar" style="height:86px;"></div><span class="bar-label" data-i18n="riskHigh">We carry the build risk</span></div>
-      </div>
       <div class="grid-3 reveal">
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -842,7 +837,7 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="procEyebrow">How an engagement runs</div><h2 data-i18n="procH2">Five stages, one continuous handoff.</h2></div><p data-i18n="procIntro">Not every project needs all five; a support retainer might start at stage 4. But this is the order work moves through when we run it end to end.</p></div>
-      <div class="timeline">
+      <div class="timeline reveal">
         <div class="tl-item"><div class="yr" data-i18n="proc1Yr">01. Discover</div><div><h4 data-i18n="proc1H">Requirement gathering &amp; analysis</h4><p data-i18n="proc1P">Workshops with the people who'll actually use the system, a review of current tools and data, and a written gap-fit analysis against the platform's standard setup before any custom work is proposed.</p></div></div>
         <div class="tl-item"><div class="yr" data-i18n="proc2Yr">02. Scope</div><div><h4 data-i18n="proc2H">Solution design &amp; proposal</h4><p data-i18n="proc2P">A concrete scope: which modules, what's configured vs. custom-built, which systems need to integrate, and what the environment (cloud or on-premise) needs to look like, with effort and timeline attached.</p></div></div>
         <div class="tl-item"><div class="yr" data-i18n="proc3Yr">03. Build</div><div><h4 data-i18n="proc3H">Configuration &amp; development</h4><p data-i18n="proc3P">Module setup, custom development, integrations and any AI components are built against the agreed scope, with staged environments so nothing hits production untested.</p></div></div>
@@ -853,12 +848,7 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="pricingEyebrow">Pricing</div><h2 data-i18n="pricingH2">Three ways to pay.</h2></div><p data-i18n="pricingIntro">Pick whichever fits how sure you are about scope, and how much risk you want us to carry.</p></div>
-      <div class="risk-scale" aria-hidden="true">
-        <div class="bar-col"><div class="bar" style="height:34px;"></div><span class="bar-label" data-i18n="riskLow">We carry less risk</span></div>
-        <div class="bar-col mid"><div class="bar" style="height:58px;"></div><span class="bar-label" data-i18n="riskMid">Shared, fixed upfront</span></div>
-        <div class="bar-col hi"><div class="bar" style="height:86px;"></div><span class="bar-label" data-i18n="riskHigh">We carry the build risk</span></div>
-      </div>
-      <div class="grid-3">
+      <div class="grid-3 reveal">
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
           <h3 data-i18n="priceHourTitle">Pay per hour</h3>
@@ -917,7 +907,7 @@ footer{
           <span>Odexa</span>
         </div>
       </div>
-      <div class="grid-2">
+      <div class="grid-2 reveal">
         <p style="color:var(--muted);font-size:15.5px;max-width:56ch;" data-i18n="story1">It didn't start with a business plan. Raj was working at an Odoo implementation agency when he met Gor, and ended up working directly with him on his own company's Odoo setup, outside the agency relationship. Gor brought the business side: sales, growth, understanding what clients actually needed before a single module got configured. Raj brought the technical depth. What began as a working relationship grew into a real partnership, and over time, into something closer to family.</p>
         <p style="color:var(--muted);font-size:15.5px;max-width:56ch;" data-i18n="story2">Odexa is what came out of that: Raj on technology, Gor on business and growth, and by now a small team of five to six working across live projects. Twenty-five-plus engagements later, across Odoo, Shopify, Zoho and AI Engineering, it's still run the way it started: hands-on, not handed off.</p>
       </div>
@@ -950,7 +940,7 @@ footer{
     </section>
 
     <section class="tight">
-      <div class="grid-2">
+      <div class="grid-2 reveal">
         <div>
           <div class="eyebrow" data-i18n="goalEyebrow">Goal</div>
           <h3 style="font-size:22px;margin-top:12px;" data-i18n="goalH3">Stay hands-on as we grow, not just sell and hand off.</h3>
@@ -966,7 +956,7 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="practiceEyebrow">In practice</div><h2 data-i18n="practiceH2">What "end-to-end" actually covers.</h2></div><p data-i18n="practiceIntro">The same team stays involved from the first workshop through years of running the system, nothing gets handed off between separate vendors.</p></div>
-      <div class="flow-row">
+      <div class="flow-row reveal">
         <div class="card"><h3 style="font-size:16px;" data-i18n="pract1H">Before the build</h3><p data-i18n="pract1P">Requirement workshops, current-state analysis, and a written gap-fit assessment against the platform's standard setup, so the scope is based on how the business actually runs.</p></div>
         <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
         <div class="card"><h3 style="font-size:16px;" data-i18n="pract2H">During the build</h3><p data-i18n="pract2P">Configuration, custom development, integrations and infrastructure set up in parallel, tested in staged environments before anything reaches production.</p></div>
@@ -977,7 +967,7 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="valuesEyebrow">How we work</div><h2 data-i18n="valuesH2">Values.</h2></div></div>
-      <div class="values-grid">
+      <div class="values-grid reveal">
         <div class="value"><h4 data-i18n="val1H">Whoever scopes it, builds it</h4><p data-i18n="val1P">The same person in the discovery workshop is usually the one writing the code, not a business analyst handing off a document to someone who wasn't in the room.</p></div>
         <div class="value"><h4 data-i18n="val2H">No B-team for support</h4><p data-i18n="val2P">Post-launch support doesn't quietly move to a cheaper, less senior team once the contract is signed. Same people, same standard, for as long as you need us.</p></div>
         <div class="value"><h4 data-i18n="val3H">Small enough to stay hands-on</h4><p data-i18n="val3P">A team of five or six means Raj and Gor are still on active projects, not just running the business from the top.</p></div>
@@ -986,7 +976,7 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="teamEyebrow">Team</div><h2 data-i18n="teamH2">The people behind Odexa.</h2></div><p data-i18n="teamIntro">Plus a small team of developers and consultants: five to six of us on active projects at any given time.</p></div>
-      <div class="team-grid">
+      <div class="team-grid reveal">
         <div class="team-card"><div class="avatar">R</div><h4>Raj</h4><p data-i18n="teamRajRole">Co-Founder, Technology</p></div>
         <div class="team-card"><div class="avatar">G</div><h4>Gor</h4><p data-i18n="teamGorRole">Co-Founder, Business &amp; Growth</p></div>
       </div>
@@ -1010,7 +1000,7 @@ footer{
       </div>
     </section>
     <section class="tight" style="padding-top:0;">
-      <div class="case-scroll" id="clientsGrid"></div>
+      <div class="case-scroll reveal" id="clientsGrid"></div>
     </section>
     <section class="tight">
       <div class="cta-banner">
@@ -1033,7 +1023,7 @@ footer{
 
     <section class="tight" style="padding-top:0;">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="nextEyebrow">What happens next</div><h2 data-i18n="nextH2">Three steps, no pressure.</h2></div></div>
-      <div class="grid-3">
+      <div class="grid-3 reveal">
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg></div>
           <h3 data-i18n="next1H">1. You describe it</h3>
@@ -1252,9 +1242,6 @@ const I18N = {
   pricingEyebrow: "Pricing",
   pricingH2: "Three ways to pay.",
   pricingIntro: "Pick whichever fits how sure you are about scope, and how much risk you want us to carry.",
-  riskLow: "We carry less risk",
-  riskMid: "Shared, fixed upfront",
-  riskHigh: "We carry the build risk",
   priceSubTitleAlt: "Zero upfront, pay monthly",
   priceSubDescAlt: "Tell us the problem. We design, build and hand over the solution, then you pay a monthly subscription for it, not a project invoice.",
   ctaProblemH2: "Have a problem, not a spec?",
@@ -1438,9 +1425,6 @@ const I18N = {
   pricingEyebrow: "Prijzen",
   pricingH2: "Drie manieren om te betalen.",
   pricingIntro: "Kies wat past bij hoe zeker je bent over de scope, en hoeveel risico je bij ons wilt leggen.",
-  riskLow: "Wij dragen minder risico",
-  riskMid: "Gedeeld, vast vooraf",
-  riskHigh: "Wij dragen het bouwrisico",
   priceSubTitleAlt: "Geen kosten vooraf, maandelijks betalen",
   priceSubDescAlt: "Vertel ons het probleem. Wij ontwerpen, bouwen en dragen de oplossing over. Daarna betaal je een maandelijks abonnement ervoor, geen projectfactuur.",
   ctaProblemH2: "Heb je een probleem, geen bestek?",
@@ -1690,8 +1674,44 @@ document.querySelectorAll('.lang-btn').forEach(btn=>{
 
 /* ============ SCROLL REVEAL ============ */
 const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.classList.contains('statbar')) animateStats(e.target);
+      observer.unobserve(e.target);
+    }
+  });
 },{threshold:0.15});
+
+/* ============ SCROLL PROGRESS BAR ============ */
+const scrollProgressEl = document.getElementById('scrollProgress');
+function updateScrollProgress(){
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  scrollProgressEl.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateScrollProgress, { passive:true });
+window.addEventListener('hashchange', ()=> setTimeout(updateScrollProgress, 50));
+
+/* ============ ANIMATED STAT COUNTERS ============ */
+function animateStats(statbar){
+  statbar.querySelectorAll('.num').forEach(el=>{
+    const raw = el.textContent.trim();
+    const match = raw.match(/^(\d+)(.*)$/);
+    if(!match) return;
+    const target = parseInt(match[1], 10);
+    const suffix = match[2];
+    const duration = 900;
+    const start = performance.now();
+    function tick(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
 
 /* ============ CONTACT FORM (front-end only) ============ */
 document.getElementById('contactForm').addEventListener('submit', function(e){
