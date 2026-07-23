@@ -193,6 +193,19 @@ section.tight{padding:64px 0;}
   grid-template-columns:1.1fr 0.9fr;
   gap:56px;
   align-items:center;
+  position:relative;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-20px; right:-40px;
+  width:340px; height:340px;
+  background-image:radial-gradient(var(--line) 1.4px, transparent 1.4px);
+  background-size:22px 22px;
+  opacity:.7;
+  z-index:-1;
+  mask-image:radial-gradient(circle, #000 40%, transparent 75%);
+  -webkit-mask-image:radial-gradient(circle, #000 40%, transparent 75%);
 }
 .hero h1{
   font-size:clamp(40px, 5.2vw, 66px);
@@ -432,18 +445,58 @@ footer{
 }
 
 /* ============ ABOUT ============ */
-.timeline{display:flex;flex-direction:column;}
+.timeline{display:flex;flex-direction:column;position:relative;}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:5px; top:8px; bottom:8px;
+  width:2px;
+  background:var(--line);
+}
 .tl-item{
   display:grid;
   grid-template-columns:120px 1fr;
   gap:24px;
   padding:26px 0;
   border-top:1px solid var(--line);
+  position:relative;
 }
 .tl-item:last-child{border-bottom:1px solid var(--line);}
-.tl-item .yr{font-family:var(--mono);font-size:14px;color:var(--amber);}
+.tl-item .yr{font-family:var(--mono);font-size:14px;color:var(--amber);position:relative;padding-left:22px;}
+.tl-item .yr::before{
+  content:"";
+  position:absolute;
+  left:0;top:50%;transform:translateY(-50%);
+  width:12px;height:12px;border-radius:50%;
+  background:var(--paper-raised);
+  border:2px solid var(--amber);
+  z-index:1;
+}
 .tl-item h4{font-size:17px;margin-bottom:6px;}
 .tl-item p{color:var(--muted);font-size:14.5px;max-width:60ch;}
+
+.industry-strip{display:flex;gap:20px;margin-top:22px;opacity:.4;}
+.industry-strip svg{width:30px;height:30px;color:var(--teal);}
+
+.story-diagram{margin-bottom:28px;}
+.story-diagram svg{width:100%;height:auto;max-width:560px;}
+.story-labels{display:flex;justify-content:space-between;max-width:560px;margin-top:4px;font-family:var(--mono);font-size:11.5px;color:var(--muted);}
+.story-labels span:last-child{color:var(--amber);font-weight:500;}
+
+.flow-arrow{display:flex;align-items:center;justify-content:center;color:var(--line);margin:0 -6px;}
+.flow-arrow svg{width:22px;height:22px;}
+.flow-row{display:flex;align-items:stretch;gap:0;}
+.flow-row .card{flex:1;}
+
+.risk-scale{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  max-width:520px;margin:0 auto 6px;padding:0 6px;
+}
+.risk-scale .bar-col{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;}
+.risk-scale .bar{width:36px;border-radius:6px 6px 0 0;background:var(--amber-soft);}
+.risk-scale .bar-col.mid .bar{background:var(--amber);opacity:.55;}
+.risk-scale .bar-col.hi .bar{background:var(--amber);}
+.risk-scale .bar-label{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-align:center;max-width:100px;}
 
 .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .value{padding:22px 0;border-top:1px solid var(--line);}
@@ -568,6 +621,8 @@ footer{
   .grid-2{grid-template-columns:1fr;}
   .contact-grid{grid-template-columns:1fr;}
   .client-card{grid-template-columns:44px 1fr;}
+  .flow-row{flex-direction:column;}
+  .flow-arrow svg{transform:rotate(90deg);}
 }
 @media (max-width: 620px){
   .wrap{padding:0 20px;}
@@ -737,6 +792,11 @@ footer{
         <a href="#/contact" class="preview-link" data-i18n="homePriceLink">Get a scope check →</a>
       </div>
       <p style="color:var(--muted);max-width:62ch;margin-top:-18px;margin-bottom:28px;font-size:15.5px;" data-i18n="homePriceIntro">Tell us the problem. We design it, build it, and hand it over, then you pay monthly, not by the hour, and not for a project that might never launch.</p>
+      <div class="risk-scale" aria-hidden="true" style="margin-bottom:28px;">
+        <div class="bar-col"><div class="bar" style="height:34px;"></div><span class="bar-label" data-i18n="riskLow">We carry less risk</span></div>
+        <div class="bar-col mid"><div class="bar" style="height:58px;"></div><span class="bar-label" data-i18n="riskMid">Shared, fixed upfront</span></div>
+        <div class="bar-col hi"><div class="bar" style="height:86px;"></div><span class="bar-label" data-i18n="riskHigh">We carry the build risk</span></div>
+      </div>
       <div class="grid-3 reveal">
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -793,6 +853,11 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="pricingEyebrow">Pricing</div><h2 data-i18n="pricingH2">Three ways to pay.</h2></div><p data-i18n="pricingIntro">Pick whichever fits how sure you are about scope, and how much risk you want us to carry.</p></div>
+      <div class="risk-scale" aria-hidden="true">
+        <div class="bar-col"><div class="bar" style="height:34px;"></div><span class="bar-label" data-i18n="riskLow">We carry less risk</span></div>
+        <div class="bar-col mid"><div class="bar" style="height:58px;"></div><span class="bar-label" data-i18n="riskMid">Shared, fixed upfront</span></div>
+        <div class="bar-col hi"><div class="bar" style="height:86px;"></div><span class="bar-label" data-i18n="riskHigh">We carry the build risk</span></div>
+      </div>
       <div class="grid-3">
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
@@ -836,6 +901,22 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="storyEyebrow">Our story</div><h2 data-i18n="storyH2">How this actually started.</h2></div></div>
+      <div class="story-diagram" aria-hidden="true">
+        <svg viewBox="0 0 600 130" fill="none">
+          <path d="M20 25 C 180 25, 220 65, 300 65" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M20 105 C 180 105, 220 65, 300 65" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M300 65 L 570 65" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+          <circle cx="20" cy="25" r="6" fill="var(--paper-raised)" stroke="var(--teal)" stroke-width="2.5"/>
+          <circle cx="20" cy="105" r="6" fill="var(--paper-raised)" stroke="var(--amber)" stroke-width="2.5"/>
+          <circle cx="300" cy="65" r="7" fill="var(--ink)"/>
+          <circle cx="570" cy="65" r="7" fill="var(--paper-raised)" stroke="var(--ink)" stroke-width="2.5"/>
+        </svg>
+        <div class="story-labels">
+          <span data-i18n="storyRajLabel">Raj — Technology</span>
+          <span data-i18n="storyGorLabel">Gor — Business &amp; Growth</span>
+          <span>Odexa</span>
+        </div>
+      </div>
       <div class="grid-2">
         <p style="color:var(--muted);font-size:15.5px;max-width:56ch;" data-i18n="story1">It didn't start with a business plan. Raj was working at an Odoo implementation agency when he met Gor, and ended up working directly with him on his own company's Odoo setup, outside the agency relationship. Gor brought the business side: sales, growth, understanding what clients actually needed before a single module got configured. Raj brought the technical depth. What began as a working relationship grew into a real partnership, and over time, into something closer to family.</p>
         <p style="color:var(--muted);font-size:15.5px;max-width:56ch;" data-i18n="story2">Odexa is what came out of that: Raj on technology, Gor on business and growth, and by now a small team of five to six working across live projects. Twenty-five-plus engagements later, across Odoo, Shopify, Zoho and AI Engineering, it's still run the way it started: hands-on, not handed off.</p>
@@ -885,9 +966,11 @@ footer{
 
     <section class="tight">
       <div class="sec-head"><div><div class="eyebrow" data-i18n="practiceEyebrow">In practice</div><h2 data-i18n="practiceH2">What "end-to-end" actually covers.</h2></div><p data-i18n="practiceIntro">The same team stays involved from the first workshop through years of running the system, nothing gets handed off between separate vendors.</p></div>
-      <div class="grid-3">
+      <div class="flow-row">
         <div class="card"><h3 style="font-size:16px;" data-i18n="pract1H">Before the build</h3><p data-i18n="pract1P">Requirement workshops, current-state analysis, and a written gap-fit assessment against the platform's standard setup, so the scope is based on how the business actually runs.</p></div>
+        <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
         <div class="card"><h3 style="font-size:16px;" data-i18n="pract2H">During the build</h3><p data-i18n="pract2P">Configuration, custom development, integrations and infrastructure set up in parallel, tested in staged environments before anything reaches production.</p></div>
+        <div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
         <div class="card"><h3 style="font-size:16px;" data-i18n="pract3H">After go-live</h3><p data-i18n="pract3P">Server monitoring, backups, upgrades and a standing support channel: the team that built the system is the same one keeping it running.</p></div>
       </div>
     </section>
@@ -918,6 +1001,13 @@ footer{
       <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;" data-i18n="clientsH2">Real businesses, real systems.</h2>
       <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;" data-i18n="clientsIntro">Five engagements across five industries and three regions: distribution, manufacturing, trade, retail and B2B/B2C wholesale. Client names are withheld here; detailed case studies and references are available on request.</p>
       <p style="color:var(--muted);max-width:56ch;margin-top:10px;font-size:13.5px;font-family:var(--mono);" data-i18n="clientsNote">Note: the case studies below are Odoo engagements. We've also delivered Shopify, Zoho and AI Engineering work for other clients; those case studies are being prepared.</p>
+      <div class="industry-strip" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="8" width="18" height="12" rx="1.4"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 13h18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 9h11l-1 9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 9Z"/><path d="M17 9a3 3 0 0 0 3-3h-1"/><path d="M9 6V4M12 6V3M15 6V4"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 2 5 5 5 9a5 5 0 0 1-10 0c0-4 2-7 5-9Z"/><path d="M12 12v8"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M4 7l8 5 8-5M12 12v10"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.2h2"/></svg>
+      </div>
     </section>
     <section class="tight" style="padding-top:0;">
       <div class="case-scroll" id="clientsGrid"></div>
@@ -1162,6 +1252,9 @@ const I18N = {
   pricingEyebrow: "Pricing",
   pricingH2: "Three ways to pay.",
   pricingIntro: "Pick whichever fits how sure you are about scope, and how much risk you want us to carry.",
+  riskLow: "We carry less risk",
+  riskMid: "Shared, fixed upfront",
+  riskHigh: "We carry the build risk",
   priceSubTitleAlt: "Zero upfront, pay monthly",
   priceSubDescAlt: "Tell us the problem. We design, build and hand over the solution, then you pay a monthly subscription for it, not a project invoice.",
   ctaProblemH2: "Have a problem, not a spec?",
@@ -1171,6 +1264,8 @@ const I18N = {
   aboutH2: "Systems people, longer than we've been a company.",
   aboutIntro: "The work started in January 2021, with hands-on Odoo implementation, consulting and support. In August 2023, that experience turned into independent client work: taking on engagements directly, end to end, instead of as part of someone else's team. Odexa was formally registered as a company in 2026, putting a legal and operational structure around work that was already running. Today that covers Odoo, Shopify, Zoho and AI Engineering, real delivery work across all four.",
   storyEyebrow: "Our story",
+  storyRajLabel: "Raj — Technology",
+  storyGorLabel: "Gor — Business &amp; Growth",
   storyH2: "How this actually started.",
   story1: "It didn't start with a business plan. Raj was working at an Odoo implementation agency when he met Gor, and ended up working directly with him on his own company's Odoo setup, outside the agency relationship. Gor brought the business side: sales, growth, understanding what clients actually needed before a single module got configured. Raj brought the technical depth. What began as a working relationship grew into a real partnership, and over time, into something closer to family.",
   story2: "Odexa is what came out of that: Raj on technology, Gor on business and growth, and by now a small team of five to six working across live projects. Twenty-five-plus engagements later, across Odoo, Shopify, Zoho and AI Engineering, it's still run the way it started: hands-on, not handed off.",
@@ -1343,6 +1438,9 @@ const I18N = {
   pricingEyebrow: "Prijzen",
   pricingH2: "Drie manieren om te betalen.",
   pricingIntro: "Kies wat past bij hoe zeker je bent over de scope, en hoeveel risico je bij ons wilt leggen.",
+  riskLow: "Wij dragen minder risico",
+  riskMid: "Gedeeld, vast vooraf",
+  riskHigh: "Wij dragen het bouwrisico",
   priceSubTitleAlt: "Geen kosten vooraf, maandelijks betalen",
   priceSubDescAlt: "Vertel ons het probleem. Wij ontwerpen, bouwen en dragen de oplossing over. Daarna betaal je een maandelijks abonnement ervoor, geen projectfactuur.",
   ctaProblemH2: "Heb je een probleem, geen bestek?",
@@ -1352,6 +1450,8 @@ const I18N = {
   aboutH2: "Systeemmensen, al langer dan we een bedrijf zijn.",
   aboutIntro: "Het werk begon in januari 2021, met hands-on Odoo-implementatie, advies en support. In augustus 2023 werd die ervaring zelfstandig klantenwerk: opdrachten rechtstreeks aannemen, volledig van a tot z, in plaats van als onderdeel van iemand anders' team. Odexa werd in 2026 formeel als bedrijf geregistreerd, waarmee er een juridische en operationele structuur kwam rond werk dat al liep. Vandaag omvat dat Odoo, Shopify, Zoho en AI Engineering, echt uitgevoerd werk op alle vier.",
   storyEyebrow: "Ons verhaal",
+  storyRajLabel: "Raj — Technologie",
+  storyGorLabel: "Gor — Business &amp; Groei",
   storyH2: "Hoe dit eigenlijk begon.",
   story1: "Het begon niet met een businessplan. Raj werkte bij een Odoo-implementatiebureau toen hij Gor ontmoette, en kwam rechtstreeks bij hem terecht om aan het Odoo-systeem van zijn eigen bedrijf te werken, los van het bureau. Gor bracht de zakelijke kant mee: sales, groei, weten wat klanten echt nodig hadden nog voordat er één module was geconfigureerd. Raj bracht de technische diepgang. Wat begon als een werkrelatie groeide uit tot een echt partnerschap, en met de tijd tot iets dat op familie begon te lijken.",
   story2: "Odexa is daaruit ontstaan: Raj op technologie, Gor op business en groei, en inmiddels een klein team van vijf tot zes mensen op actieve projecten. Vijfentwintig-plus opdrachten later, binnen Odoo, Shopify, Zoho en AI Engineering, wordt het nog altijd gerund zoals het begon: hands-on, niet overgedragen.",
