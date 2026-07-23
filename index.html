@@ -722,7 +722,7 @@ footer{
       <button class="lang-btn" id="langEnBtn" data-lang="en">EN</button>
       <button class="lang-btn active" id="langNlBtn" data-lang="nl">NL</button>
     </div>
-    <a href="#/contact" class="nav-cta" data-i18n="navCta">Start a project</a>
+    <a href="#/start" class="nav-cta" data-i18n="navCta">Start a project</a>
     <button class="burger" id="burgerBtn" aria-label="Toggle menu"><span></span></button>
   </div>
   <div class="mobile-links" id="mobileLinks">
@@ -748,7 +748,7 @@ footer{
         <h1 data-i18n="heroH1">We help businesses get their systems right. <em>End&nbsp;to&nbsp;end.</em></h1>
         <p class="lede" data-i18n="heroLede">25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering. Same consulting-first approach, whichever platform the work is on.</p>
         <div class="cta-row">
-          <a href="#/contact" class="btn btn-primary" data-i18n="heroCtaPrimary">Start a project →</a>
+          <a href="#/start" class="btn btn-primary" data-i18n="heroCtaPrimary">Start a project →</a>
           <a href="#/services" class="btn btn-ghost" data-i18n="heroCtaGhost">See what we do</a>
         </div>
         <div class="strip" style="margin-top:28px;">
@@ -789,7 +789,7 @@ footer{
           <div class="eyebrow" data-i18n="homePriceEyebrow">How this works</div>
           <h2 data-i18n="homePriceH2">You don't pay until it's running.</h2>
         </div>
-        <a href="#/contact" class="preview-link" data-i18n="homePriceLink">Get a scope check →</a>
+        <a href="#/start" class="preview-link" data-i18n="homePriceLink">Get a scope check →</a>
       </div>
       <p style="color:var(--muted);max-width:62ch;margin-top:-18px;margin-bottom:28px;font-size:15.5px;" data-i18n="homePriceIntro">Tell us the problem. We design it, build it, and hand it over, then you pay monthly, not by the hour, and not for a project that might never launch.</p>
       <div class="grid-3 reveal">
@@ -821,7 +821,7 @@ footer{
           <h2 data-i18n="ctaTalkH2">Let's talk about your systems.</h2>
           <p data-i18n="ctaTalkP">No strings attached, just a straight conversation about where your systems stand today and what we'd do about it.</p>
         </div>
-        <a href="#/contact" class="btn btn-primary" data-i18n="heroCtaPrimary">Start a project →</a>
+        <a href="#/start" class="btn btn-primary" data-i18n="heroCtaPrimary">Start a project →</a>
       </div>
     </section>
   </section>
@@ -876,7 +876,7 @@ footer{
           <h2 data-i18n="ctaProblemH2">Have a problem, not a spec?</h2>
           <p data-i18n="ctaProblemP">Describe what's going wrong or what you wish ran itself. We'll tell you honestly whether it's doable, and roughly how.</p>
         </div>
-        <a href="#/contact" class="btn btn-primary" data-i18n="ctaScopeLink">Get a scope check →</a>
+        <a href="#/start" class="btn btn-primary" data-i18n="ctaScopeLink">Get a scope check →</a>
       </div>
     </section>
   </section>
@@ -1014,7 +1014,7 @@ footer{
   </section>
 
   <!-- ============ CONTACT ============ -->
-  <section class="view" id="view-contact">
+  <section class="view" id="view-start">
     <section>
       <div class="eyebrow" data-i18n="startEyebrow">Start a project</div>
       <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;" data-i18n="startH2">Tell us the problem. We'll tell you if it's doable.</h2>
@@ -1063,52 +1063,97 @@ footer{
           </div>
         </div>
 
-        <form id="contactForm">
+        <form id="startForm">
           <div class="field-row">
-            <div class="field"><label for="fname" data-i18n="fName">Name</label><input id="fname" type="text" required></div>
-            <div class="field"><label for="femail" data-i18n="fEmail">Email</label><input id="femail" type="email" required></div>
+            <div class="field"><label for="sfname" data-i18n="fName">Name</label><input id="sfname" type="text" required></div>
+            <div class="field"><label for="sfemail" data-i18n="fEmail">Email</label><input id="sfemail" type="email" required></div>
           </div>
           <div class="field-row">
-            <div class="field"><label for="fcompany" data-i18n="fCompany">Company</label><input id="fcompany" type="text"></div>
-            <div class="field"><label for="fphone" data-i18n="fPhone">Phone</label><input id="fphone" type="tel"></div>
+            <div class="field"><label for="sfcompany" data-i18n="fCompany">Company</label><input id="sfcompany" type="text"></div>
+            <div class="field"><label for="sfphone" data-i18n="fPhone">Phone</label><input id="sfphone" type="tel"></div>
           </div>
 
           <div class="field">
             <label data-i18n="fSize">Company size</label>
             <div class="pill-group">
-              <label class="pill-option"><input type="radio" name="fsize" value="Solo"><span data-i18n="sizeSolo">Solo</span></label>
-              <label class="pill-option"><input type="radio" name="fsize" value="2-10"><span data-i18n="size2">2-10 people</span></label>
-              <label class="pill-option"><input type="radio" name="fsize" value="11-50"><span data-i18n="size3">11-50 people</span></label>
-              <label class="pill-option"><input type="radio" name="fsize" value="50+"><span data-i18n="size4">50+ people</span></label>
+              <label class="pill-option"><input type="radio" name="sfsize" value="Solo"><span data-i18n="sizeSolo">Solo</span></label>
+              <label class="pill-option"><input type="radio" name="sfsize" value="2-10"><span data-i18n="size2">2-10 people</span></label>
+              <label class="pill-option"><input type="radio" name="sfsize" value="11-50"><span data-i18n="size3">11-50 people</span></label>
+              <label class="pill-option"><input type="radio" name="sfsize" value="50+"><span data-i18n="size4">50+ people</span></label>
             </div>
           </div>
 
           <div class="field">
             <label data-i18n="fPriceModel">Which pricing model interests you?</label>
             <div class="pill-group">
-              <label class="pill-option"><input type="radio" name="fprice" value="Per hour"><span data-i18n="priceHourShort">Per hour</span></label>
-              <label class="pill-option"><input type="radio" name="fprice" value="Per project"><span data-i18n="priceProjShort">Per project</span></label>
-              <label class="pill-option"><input type="radio" name="fprice" value="Zero upfront, monthly"><span data-i18n="priceZeroShort">Zero upfront, monthly</span></label>
-              <label class="pill-option"><input type="radio" name="fprice" value="Not sure yet" checked><span data-i18n="notSure">Not sure yet</span></label>
+              <label class="pill-option"><input type="radio" name="sfprice" value="Per hour"><span data-i18n="priceHourShort">Per hour</span></label>
+              <label class="pill-option"><input type="radio" name="sfprice" value="Per project"><span data-i18n="priceProjShort">Per project</span></label>
+              <label class="pill-option"><input type="radio" name="sfprice" value="Zero upfront, monthly"><span data-i18n="priceZeroShort">Zero upfront, monthly</span></label>
+              <label class="pill-option"><input type="radio" name="sfprice" value="Not sure yet" checked><span data-i18n="notSure">Not sure yet</span></label>
             </div>
           </div>
 
           <div class="field">
             <label data-i18n="fTimeline">Timeline</label>
             <div class="pill-group">
-              <label class="pill-option"><input type="radio" name="ftime" value="ASAP"><span data-i18n="timeAsap">ASAP</span></label>
-              <label class="pill-option"><input type="radio" name="ftime" value="1-3 months"><span data-i18n="time1">1-3 months</span></label>
-              <label class="pill-option"><input type="radio" name="ftime" value="3-6 months"><span data-i18n="time2">3-6 months</span></label>
-              <label class="pill-option"><input type="radio" name="ftime" value="Just exploring" checked><span data-i18n="timeExplore">Just exploring</span></label>
+              <label class="pill-option"><input type="radio" name="sftime" value="ASAP"><span data-i18n="timeAsap">ASAP</span></label>
+              <label class="pill-option"><input type="radio" name="sftime" value="1-3 months"><span data-i18n="time1">1-3 months</span></label>
+              <label class="pill-option"><input type="radio" name="sftime" value="3-6 months"><span data-i18n="time2">3-6 months</span></label>
+              <label class="pill-option"><input type="radio" name="sftime" value="Just exploring" checked><span data-i18n="timeExplore">Just exploring</span></label>
             </div>
           </div>
 
           <div class="field">
-            <label for="fmsg" data-i18n="fProblem">What's the problem?</label>
-            <textarea id="fmsg" required placeholder="What's going wrong, what's manual today, or what you wish ran itself. We'll tell you if it's doable." data-i18n-placeholder="fProblemPlaceholder"></textarea>
+            <label for="sfmsg" data-i18n="fProblem">What's the problem?</label>
+            <textarea id="sfmsg" required placeholder="What's going wrong, what's manual today, or what you wish ran itself. We'll tell you if it's doable." data-i18n-placeholder="fProblemPlaceholder"></textarea>
           </div>
           <button type="submit" class="btn btn-primary" data-i18n="fSend">Send message →</button>
-          <div class="toast" id="formToast" data-i18n="fToast">Thanks. We'll review it and tell you honestly if it's doable, plus roughly how.</div>
+          <div class="toast" id="startToast" data-i18n="fToast">Thanks. We'll review it and tell you honestly if it's doable, plus roughly how.</div>
+        </form>
+      </div>
+    </section>
+  </section>
+
+  <!-- ============ CONTACT (general, separate from Start a project) ============ -->
+  <section class="view" id="view-contact">
+    <section>
+      <div class="eyebrow" data-i18n="contactEyebrow">Contact</div>
+      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:18ch;" data-i18n="contactH2">Just have a question?</h2>
+      <p style="color:var(--muted);max-width:52ch;margin-top:14px;font-size:16px;" data-i18n="contactIntro">Not ready to scope a whole project? Send a general question and we'll get back to you directly.</p>
+    </section>
+
+    <section class="tight" style="padding-top:24px;">
+      <div class="contact-grid">
+        <div>
+          <div class="info-block">
+            <span data-i18n="infoEmail">Email</span>
+            <a href="mailto:hello@odexa.eu">hello@odexa.eu</a>
+          </div>
+          <div class="info-block">
+            <span data-i18n="infoPhone">Phone</span>
+            <p>+32 000 00 00 00</p>
+          </div>
+          <div class="info-block">
+            <span data-i18n="infoWhere">Where we work</span>
+            <p data-i18n="infoWhereP">Based in Lommel, Belgium.</p>
+          </div>
+          <div class="info-block">
+            <span data-i18n="infoResponse">Response time</span>
+            <p data-i18n="infoResponseP">We reply within one business day.</p>
+          </div>
+        </div>
+
+        <form id="contactForm">
+          <div class="field-row">
+            <div class="field"><label for="fname" data-i18n="fName">Name</label><input id="fname" type="text" required></div>
+            <div class="field"><label for="femail" data-i18n="fEmail">Email</label><input id="femail" type="email" required></div>
+          </div>
+          <div class="field">
+            <label for="fmessage" data-i18n="fMessage">Message</label>
+            <textarea id="fmessage" required placeholder="Ask us anything, no need to scope a project for this." data-i18n-placeholder="fMessagePlaceholder"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="fSend">Send message →</button>
+          <div class="toast" id="formToast" data-i18n="contactToast">Thanks, we've received your message. We'll get back to you soon.</div>
         </form>
       </div>
     </section>
@@ -1306,6 +1351,12 @@ const I18N = {
   clientsCtaP: "Ask and we'll walk you through the actual scope, timeline and decisions. References available on request.",
   clientsCtaLink: "Get in touch →",
   startEyebrow: "Start a project",
+  contactEyebrow: "Contact",
+  contactH2: "Just have a question?",
+  contactIntro: "Not ready to scope a whole project? Send a general question and we'll get back to you directly.",
+  fMessage: "Message",
+  fMessagePlaceholder: "Ask us anything, no need to scope a project for this.",
+  contactToast: "Thanks, we've received your message. We'll get back to you soon.",
   startH2: "Tell us the problem. We'll tell you if it's doable.",
   startIntro: "Describe what's going wrong, what's too manual, or what you wish just ran itself. No sales pitch first, just a straight read on whether it's doable, roughly how, and which pricing model fits.",
   nextEyebrow: "What happens next",
@@ -1489,6 +1540,12 @@ const I18N = {
   clientsCtaP: "Vraag ernaar en we lopen de echte scope, planning en keuzes met je door. Referenties op aanvraag.",
   clientsCtaLink: "Neem contact op →",
   startEyebrow: "Start een project",
+  contactEyebrow: "Contact",
+  contactH2: "Gewoon een vraag?",
+  contactIntro: "Nog niet klaar om een heel project te scopen? Stuur een algemene vraag en we reageren rechtstreeks.",
+  fMessage: "Bericht",
+  fMessagePlaceholder: "Vraag ons alles, hiervoor hoef je geen project te scopen.",
+  contactToast: "Bedankt, we hebben je bericht ontvangen. We nemen snel contact op.",
   startH2: "Vertel ons het probleem. Wij zeggen of het haalbaar is.",
   startIntro: "Beschrijf wat er misgaat, wat te veel handwerk is, of wat je zou willen dat vanzelf liep. Geen verkooppraatje vooraf, gewoon een eerlijk antwoord of het haalbaar is, ruwweg hoe, en welk prijsmodel past.",
   nextEyebrow: "Wat er daarna gebeurt",
@@ -1622,7 +1679,7 @@ renderClients();
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 /* ============ ROUTING ============ */
-const routes = ['home','services','about','clients','contact'];
+const routes = ['home','services','about','clients','contact','start'];
 function router(){
   let hash = location.hash.replace('#/','') || 'home';
   if(!routes.includes(hash)) hash = 'home';
@@ -1715,10 +1772,15 @@ function animateStats(statbar){
   });
 }
 
-/* ============ CONTACT FORM (front-end only) ============ */
+/* ============ FORMS (front-end only) ============ */
 document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
   document.getElementById('formToast').classList.add('show');
+  this.reset();
+});
+document.getElementById('startForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('startToast').classList.add('show');
   this.reset();
 });
 
