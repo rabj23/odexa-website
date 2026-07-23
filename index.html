@@ -145,6 +145,10 @@ nav.links a.active{color:var(--ink);background:var(--paper-raised);box-shadow:in
 }
 .nav-cta:hover{background:var(--teal);}
 
+.lang-toggle{display:flex;gap:2px;border:1px solid var(--line);border-radius:6px;padding:2px;background:var(--paper-raised);}
+.lang-btn{font-family:var(--mono);font-size:11px;padding:5px 9px;border-radius:4px;color:var(--muted);background:transparent;}
+.lang-btn.active{background:var(--amber);color:var(--paper);}
+
 .burger{
   display:none;
   width:38px;height:38px;
@@ -519,6 +523,20 @@ footer{
 .field input:focus, .field textarea:focus, .field select:focus{border-color:var(--ink);outline:none;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 
+.pill-group{display:flex;flex-wrap:wrap;gap:8px;}
+.pill-option{position:relative;}
+.pill-option input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.pill-option span{display:inline-block;padding:9px 16px;border-radius:20px;border:1px solid var(--line);background:var(--paper-raised);font-family:var(--mono);font-size:12.5px;color:var(--ink);transition:all .15s ease;}
+.pill-option input:checked + span{background:var(--amber);border-color:var(--amber);color:var(--paper);}
+.pill-option input:focus-visible + span{outline:2px solid var(--amber);outline-offset:2px;}
+
+.next-steps{display:flex;flex-direction:column;gap:0;}
+.next-step{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);}
+.next-step:first-child{border-top:none;padding-top:0;}
+.next-step .num{font-family:var(--mono);font-size:12px;color:var(--amber);flex-shrink:0;width:22px;}
+.next-step h4{font-size:14.5px;margin-bottom:4px;}
+.next-step p{color:var(--muted);font-size:13px;}
+
 .form-note{
   font-family:var(--mono);
   font-size:12px;
@@ -639,21 +657,29 @@ footer{
       Odexa
     </a>
     <nav class="links" id="navLinks">
-      <a href="#/home" data-route="home">Home</a>
-      <a href="#/services" data-route="services">Services</a>
-      <a href="#/about" data-route="about">About</a>
-      <a href="#/clients" data-route="clients">Clients</a>
-      <a href="#/contact" data-route="contact">Contact</a>
+      <a href="#/home" data-route="home" data-i18n="navHome">Home</a>
+      <a href="#/services" data-route="services" data-i18n="navServices">Services</a>
+      <a href="#/about" data-route="about" data-i18n="navAbout">About</a>
+      <a href="#/clients" data-route="clients" data-i18n="navClients">Clients</a>
+      <a href="#/contact" data-route="contact" data-i18n="navContact">Contact</a>
     </nav>
-    <a href="#/contact" class="nav-cta">Start a project</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="langEnBtn" data-lang="en">EN</button>
+      <button class="lang-btn" id="langNlBtn" data-lang="nl">NL</button>
+    </div>
+    <a href="#/contact" class="nav-cta" data-i18n="navCta">Start a project</a>
     <button class="burger" id="burgerBtn" aria-label="Toggle menu"><span></span></button>
   </div>
   <div class="mobile-links" id="mobileLinks">
-    <a href="#/home" data-route="home">Home</a>
-    <a href="#/services" data-route="services">Services</a>
-    <a href="#/about" data-route="about">About</a>
-    <a href="#/clients" data-route="clients">Clients</a>
-    <a href="#/contact" data-route="contact">Contact</a>
+    <a href="#/home" data-route="home" data-i18n="navHome">Home</a>
+    <a href="#/services" data-route="services" data-i18n="navServices">Services</a>
+    <a href="#/about" data-route="about" data-i18n="navAbout">About</a>
+    <a href="#/clients" data-route="clients" data-i18n="navClients">Clients</a>
+    <a href="#/contact" data-route="contact" data-i18n="navContact">Contact</a>
+    <div class="lang-toggle" style="margin-top:10px;">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
+    </div>
   </div>
 </header>
 
@@ -663,41 +689,41 @@ footer{
   <section class="view" id="view-home">
     <div class="hero">
       <div>
-        <div class="eyebrow">Systems consulting & development · since 2021</div>
-        <h1>We help businesses get their systems right. <em>End&nbsp;to&nbsp;end.</em></h1>
-        <p class="lede">25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering. Same consulting-first approach, whichever platform the work is on.</p>
+        <div class="eyebrow" data-i18n="heroEyebrow">Systems consulting &amp; development · since 2021</div>
+        <h1 data-i18n="heroH1">We help businesses get their systems right. <em>End&nbsp;to&nbsp;end.</em></h1>
+        <p class="lede" data-i18n="heroLede">25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering. Same consulting-first approach, whichever platform the work is on.</p>
         <div class="cta-row">
-          <a href="#/contact" class="btn btn-primary">Start a project →</a>
-          <a href="#/services" class="btn btn-ghost">See what we do</a>
+          <a href="#/contact" class="btn btn-primary" data-i18n="heroCtaPrimary">Start a project →</a>
+          <a href="#/services" class="btn btn-ghost" data-i18n="heroCtaGhost">See what we do</a>
         </div>
         <div class="strip" style="margin-top:28px;">
-          <div class="pill"><span class="dot"></span>Odoo · Shopify · Zoho</div>
-          <div class="pill"><span class="dot"></span>25+ projects delivered</div>
-          <div class="pill"><span class="dot"></span>Sales, marketing &amp; task automation</div>
+          <div class="pill"><span class="dot"></span><span data-i18n="heroPill1">Odoo · Shopify · Zoho</span></div>
+          <div class="pill"><span class="dot"></span><span data-i18n="heroPill2">25+ projects delivered</span></div>
+          <div class="pill"><span class="dot"></span><span data-i18n="heroPill3">Sales, marketing &amp; task automation</span></div>
         </div>
       </div>
       <div class="pill-cluster" aria-hidden="true">
-        <div class="cap-pill on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Consult</span></div>
-        <div class="cap-pill off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/></svg><span>Discover</span></div>
+        <div class="cap-pill on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span data-i18n="capConsult">Consult</span></div>
+        <div class="cap-pill off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/></svg><span data-i18n="capDiscover">Discover</span></div>
         <div class="cap-pill on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3.2"/></svg><span>AI</span></div>
-        <div class="cap-pill off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.2 10.6 16M16.4 7.2 13.4 16M8.2 6h7.6"/></svg><span>Integrate</span></div>
+        <div class="cap-pill off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.2 10.6 16M16.4 7.2 13.4 16M8.2 6h7.6"/></svg><span data-i18n="capIntegrate">Integrate</span></div>
       </div>
     </div>
 
     <div class="statbar reveal">
-      <div class="stat"><div class="num">2021</div><div class="lbl">Odoo experience began</div></div>
-      <div class="stat"><div class="num">2023</div><div class="lbl">Independent client work began</div></div>
-      <div class="stat"><div class="num">2026</div><div class="lbl">Odexa formally registered</div></div>
-      <div class="stat"><div class="num">25+</div><div class="lbl">Projects delivered</div></div>
+      <div class="stat"><div class="num">2021</div><div class="lbl" data-i18n="stat1">Odoo experience began</div></div>
+      <div class="stat"><div class="num">2023</div><div class="lbl" data-i18n="stat2">Independent client work began</div></div>
+      <div class="stat"><div class="num">2026</div><div class="lbl" data-i18n="stat3">Odexa formally registered</div></div>
+      <div class="stat"><div class="num">25+</div><div class="lbl" data-i18n="stat4">Projects delivered</div></div>
     </div>
 
     <section>
       <div class="sec-head">
         <div>
-          <div class="eyebrow">What we do</div>
-          <h2>One partner, your systems end to end.</h2>
+          <div class="eyebrow" data-i18n="homeWhatEyebrow">What we do</div>
+          <h2 data-i18n="homeWhatH2">One partner, your systems end to end.</h2>
         </div>
-        <a href="#/services" class="preview-link">All services →</a>
+        <a href="#/services" class="preview-link" data-i18n="homeWhatLink">All services →</a>
       </div>
       <div class="grid-3 reveal" id="homeServicesPreview"></div>
     </section>
@@ -705,31 +731,31 @@ footer{
     <section class="tight">
       <div class="sec-head">
         <div>
-          <div class="eyebrow">How this works</div>
-          <h2>You don't pay until it's running.</h2>
+          <div class="eyebrow" data-i18n="homePriceEyebrow">How this works</div>
+          <h2 data-i18n="homePriceH2">You don't pay until it's running.</h2>
         </div>
-        <a href="#/contact" class="preview-link">Get a scope check →</a>
+        <a href="#/contact" class="preview-link" data-i18n="homePriceLink">Get a scope check →</a>
       </div>
-      <p style="color:var(--muted);max-width:62ch;margin-top:-18px;margin-bottom:28px;font-size:15.5px;">Tell us the problem. We design it, build it, and hand it over, then you pay monthly, not by the hour, and not for a project that might never launch. First year's paid upfront so the build actually gets built. Cancel any time after that.</p>
+      <p style="color:var(--muted);max-width:62ch;margin-top:-18px;margin-bottom:28px;font-size:15.5px;" data-i18n="homePriceIntro">Tell us the problem. We design it, build it, and hand it over, then you pay monthly, not by the hour, and not for a project that might never launch.</p>
       <div class="grid-3 reveal">
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <h3>Pay per hour</h3>
-          <p>Straightforward hourly billing for advisory, fixes, or ad hoc development. No fixed scope required.</p>
-          <ul><li>Time-tracked work</li><li>Invoiced monthly</li><li>No minimum commitment</li></ul>
+          <h3 data-i18n="priceHourTitle">Pay per hour</h3>
+          <p data-i18n="priceHourDesc">Straightforward hourly billing for advisory, fixes, or ad hoc development. No fixed scope required.</p>
+          <ul><li data-i18n="priceHourB1">Time-tracked work</li><li data-i18n="priceHourB2">Invoiced monthly</li><li data-i18n="priceHourB3">No minimum commitment</li></ul>
         </div>
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg></div>
-          <h3>Pay per project</h3>
-          <p>A defined scope, timeline and fixed price agreed upfront. Best when requirements are already clear.</p>
-          <ul><li>Scoped deliverables</li><li>Milestone-based delivery</li><li>Fixed price agreed upfront</li></ul>
+          <h3 data-i18n="priceProjTitle">Pay per project</h3>
+          <p data-i18n="priceProjDesc">A defined scope, timeline and fixed price agreed upfront. Best when requirements are already clear.</p>
+          <ul><li data-i18n="priceProjB1">Scoped deliverables</li><li data-i18n="priceProjB2">Milestone-based delivery</li><li data-i18n="priceProjB3">Fixed price agreed upfront</li></ul>
         </div>
         <div class="card core">
-          <span class="badge-core">The idea we believe in</span>
+          <span class="badge-core" data-i18n="priceSubBadge">The idea we believe in</span>
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M20 10a8 8 0 0 0-14.9-3M4 14a8 8 0 0 0 14.9 3"/></svg></div>
-          <h3>Zero upfront, pay monthly</h3>
-          <p>You tell us the problem. We build it and hand it over, then you pay a monthly subscription for it, not a project invoice.</p>
-          <ul><li>No upfront build cost</li><li>First year billed annually, to cover the build</li></ul>
+          <h3 data-i18n="priceSubTitle">Zero upfront, pay monthly</h3>
+          <p data-i18n="priceSubDesc">You tell us the problem. We build it and hand it over, then you pay a monthly subscription for it, not a project invoice.</p>
+          <ul><li data-i18n="priceSubB1">No upfront build cost</li></ul>
         </div>
       </div>
     </section>
@@ -737,10 +763,10 @@ footer{
     <section class="tight">
       <div class="cta-banner">
         <div>
-          <h2>Let's talk about your systems.</h2>
-          <p>No strings attached, just a straight conversation about where your systems stand today and what we'd do about it.</p>
+          <h2 data-i18n="ctaTalkH2">Let's talk about your systems.</h2>
+          <p data-i18n="ctaTalkP">No strings attached, just a straight conversation about where your systems stand today and what we'd do about it.</p>
         </div>
-        <a href="#/contact" class="btn btn-primary">Start a project →</a>
+        <a href="#/contact" class="btn btn-primary" data-i18n="heroCtaPrimary">Start a project →</a>
       </div>
     </section>
   </section>
@@ -748,43 +774,43 @@ footer{
   <!-- ============ SERVICES ============ -->
   <section class="view" id="view-services">
     <section>
-      <div class="eyebrow">Services</div>
-      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:26ch;">Every platform, end to end.</h2>
-      <p style="color:var(--muted);max-width:60ch;margin-top:14px;font-size:16px;">25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering: real delivery work on each, not services we've only listed on a page.</p>
+      <div class="eyebrow" data-i18n="svcEyebrow">Services</div>
+      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:26ch;" data-i18n="svcH2">Every platform, end to end.</h2>
+      <p style="color:var(--muted);max-width:60ch;margin-top:14px;font-size:16px;" data-i18n="svcIntro">25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering: real delivery work on each, not services we've only listed on a page.</p>
     </section>
     <section class="tight" style="padding-top:0;" id="servicesByCategory"></section>
 
     <section class="tight">
-      <div class="sec-head"><div><div class="eyebrow">How an engagement runs</div><h2>Five stages, one continuous handoff.</h2></div><p>Not every project needs all five; a support retainer might start at stage 4. But this is the order work moves through when we run it end to end.</p></div>
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="procEyebrow">How an engagement runs</div><h2 data-i18n="procH2">Five stages, one continuous handoff.</h2></div><p data-i18n="procIntro">Not every project needs all five; a support retainer might start at stage 4. But this is the order work moves through when we run it end to end.</p></div>
       <div class="timeline">
-        <div class="tl-item"><div class="yr">01. Discover</div><div><h4>Requirement gathering &amp; analysis</h4><p>Workshops with the people who'll actually use the system, a review of current tools and data, and a written gap-fit analysis against the platform's standard setup before any custom work is proposed.</p></div></div>
-        <div class="tl-item"><div class="yr">02. Scope</div><div><h4>Solution design &amp; proposal</h4><p>A concrete scope: which modules, what's configured vs. custom-built, which systems need to integrate, and what the environment (cloud or on-premise) needs to look like, with effort and timeline attached.</p></div></div>
-        <div class="tl-item"><div class="yr">03. Build</div><div><h4>Configuration &amp; development</h4><p>Module setup, custom development, integrations and any AI components are built against the agreed scope, with staged environments so nothing hits production untested.</p></div></div>
-        <div class="tl-item"><div class="yr">04. Launch</div><div><h4>Migration, training &amp; go-live</h4><p>Data migration, user training, and a go-live plan with a rollback path. Go-live is treated as an operational event, not a handover email.</p></div></div>
-        <div class="tl-item"><div class="yr">05. Operate</div><div><h4>Support, hosting &amp; iteration</h4><p>Server monitoring, patching and backups, plus a standing channel for fixes, small enhancements and the next round of requirements as the business changes.</p></div></div>
+        <div class="tl-item"><div class="yr" data-i18n="proc1Yr">01. Discover</div><div><h4 data-i18n="proc1H">Requirement gathering &amp; analysis</h4><p data-i18n="proc1P">Workshops with the people who'll actually use the system, a review of current tools and data, and a written gap-fit analysis against the platform's standard setup before any custom work is proposed.</p></div></div>
+        <div class="tl-item"><div class="yr" data-i18n="proc2Yr">02. Scope</div><div><h4 data-i18n="proc2H">Solution design &amp; proposal</h4><p data-i18n="proc2P">A concrete scope: which modules, what's configured vs. custom-built, which systems need to integrate, and what the environment (cloud or on-premise) needs to look like, with effort and timeline attached.</p></div></div>
+        <div class="tl-item"><div class="yr" data-i18n="proc3Yr">03. Build</div><div><h4 data-i18n="proc3H">Configuration &amp; development</h4><p data-i18n="proc3P">Module setup, custom development, integrations and any AI components are built against the agreed scope, with staged environments so nothing hits production untested.</p></div></div>
+        <div class="tl-item"><div class="yr" data-i18n="proc4Yr">04. Launch</div><div><h4 data-i18n="proc4H">Migration, training &amp; go-live</h4><p data-i18n="proc4P">Data migration, user training, and a go-live plan with a rollback path. Go-live is treated as an operational event, not a handover email.</p></div></div>
+        <div class="tl-item"><div class="yr" data-i18n="proc5Yr">05. Operate</div><div><h4 data-i18n="proc5H">Support, hosting &amp; iteration</h4><p data-i18n="proc5P">Server monitoring, patching and backups, plus a standing channel for fixes, small enhancements and the next round of requirements as the business changes.</p></div></div>
       </div>
     </section>
 
     <section class="tight">
-      <div class="sec-head"><div><div class="eyebrow">Pricing</div><h2>Three ways to pay.</h2></div><p>Pick whichever fits how sure you are about scope, and how much risk you want us to carry.</p></div>
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="pricingEyebrow">Pricing</div><h2 data-i18n="pricingH2">Three ways to pay.</h2></div><p data-i18n="pricingIntro">Pick whichever fits how sure you are about scope, and how much risk you want us to carry.</p></div>
       <div class="grid-3">
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <h3>Pay per hour</h3>
-          <p>Straightforward hourly billing for advisory, fixes, or ad hoc development. No fixed scope required.</p>
-          <ul><li>Time-tracked work</li><li>Invoiced monthly</li><li>No minimum commitment</li></ul>
+          <h3 data-i18n="priceHourTitle">Pay per hour</h3>
+          <p data-i18n="priceHourDesc">Straightforward hourly billing for advisory, fixes, or ad hoc development. No fixed scope required.</p>
+          <ul><li data-i18n="priceHourB1">Time-tracked work</li><li data-i18n="priceHourB2">Invoiced monthly</li><li data-i18n="priceHourB3">No minimum commitment</li></ul>
         </div>
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg></div>
-          <h3>Pay per project</h3>
-          <p>A defined scope, timeline and fixed price agreed upfront. Best when requirements are already clear.</p>
-          <ul><li>Scoped deliverables</li><li>Milestone-based delivery</li><li>Fixed price agreed upfront</li></ul>
+          <h3 data-i18n="priceProjTitle">Pay per project</h3>
+          <p data-i18n="priceProjDesc">A defined scope, timeline and fixed price agreed upfront. Best when requirements are already clear.</p>
+          <ul><li data-i18n="priceProjB1">Scoped deliverables</li><li data-i18n="priceProjB2">Milestone-based delivery</li><li data-i18n="priceProjB3">Fixed price agreed upfront</li></ul>
         </div>
         <div class="card">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M20 10a8 8 0 0 0-14.9-3M4 14a8 8 0 0 0 14.9 3"/></svg></div>
-          <h3>Zero upfront, pay monthly</h3>
-          <p>Tell us the problem. We design, build and hand over the solution, then you pay a monthly subscription for it, not a project invoice.</p>
-          <ul><li>No upfront build cost</li><li>First year billed annually, to cover the build</li></ul>
+          <h3 data-i18n="priceSubTitleAlt">Zero upfront, pay monthly</h3>
+          <p data-i18n="priceSubDescAlt">Tell us the problem. We design, build and hand over the solution, then you pay a monthly subscription for it, not a project invoice.</p>
+          <ul><li data-i18n="priceSubB1">No upfront build cost</li></ul>
         </div>
       </div>
     </section>
@@ -792,10 +818,10 @@ footer{
     <section class="tight">
       <div class="cta-banner">
         <div>
-          <h2>Have a problem, not a spec?</h2>
-          <p>Describe what's going wrong or what you wish ran itself. We'll tell you honestly whether it's doable, and roughly how.</p>
+          <h2 data-i18n="ctaProblemH2">Have a problem, not a spec?</h2>
+          <p data-i18n="ctaProblemP">Describe what's going wrong or what you wish ran itself. We'll tell you honestly whether it's doable, and roughly how.</p>
         </div>
-        <a href="#/contact" class="btn btn-primary">Get a scope check →</a>
+        <a href="#/contact" class="btn btn-primary" data-i18n="ctaScopeLink">Get a scope check →</a>
       </div>
     </section>
   </section>
@@ -803,41 +829,41 @@ footer{
   <!-- ============ ABOUT ============ -->
   <section class="view" id="view-about">
     <section>
-      <div class="eyebrow">About</div>
-      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:22ch;">Systems people, longer than we've been a company.</h2>
-      <p style="color:var(--muted);max-width:60ch;margin-top:16px;font-size:16px;">The work started in January 2021, with hands-on Odoo implementation, consulting and support. In August 2023, that experience turned into independent client work: taking on engagements directly, end to end, instead of as part of someone else's team. Odexa was formally registered as a company in 2026, putting a legal and operational structure around work that was already running. Today that covers Odoo, Shopify, Zoho and AI Engineering, real delivery work across all four.</p>
+      <div class="eyebrow" data-i18n="aboutEyebrow">About</div>
+      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:22ch;" data-i18n="aboutH2">Systems people, longer than we've been a company.</h2>
+      <p style="color:var(--muted);max-width:60ch;margin-top:16px;font-size:16px;" data-i18n="aboutIntro">The work started in January 2021, with hands-on Odoo implementation, consulting and support. In August 2023, that experience turned into independent client work: taking on engagements directly, end to end, instead of as part of someone else's team. Odexa was formally registered as a company in 2026, putting a legal and operational structure around work that was already running. Today that covers Odoo, Shopify, Zoho and AI Engineering, real delivery work across all four.</p>
     </section>
 
     <section class="tight">
-      <div class="sec-head"><div><div class="eyebrow">Our story</div><h2>How this actually started.</h2></div></div>
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="storyEyebrow">Our story</div><h2 data-i18n="storyH2">How this actually started.</h2></div></div>
       <div class="grid-2">
-        <p style="color:var(--muted);font-size:15.5px;max-width:56ch;">It didn't start with a business plan. Raj was working at an Odoo implementation agency when he met Gor, and ended up working directly with him on his own company's Odoo setup, outside the agency relationship. Gor brought the business side: sales, growth, understanding what clients actually needed before a single module got configured. Raj brought the technical depth. What began as a working relationship grew into a real partnership, and over time, into something closer to family.</p>
-        <p style="color:var(--muted);font-size:15.5px;max-width:56ch;">Odexa is what came out of that: Raj on technology, Gor on business and growth, and by now a small team of five to six working across live projects. Twenty-five-plus engagements later, across Odoo, Shopify, Zoho and AI Engineering, it's still run the way it started: hands-on, not handed off.</p>
+        <p style="color:var(--muted);font-size:15.5px;max-width:56ch;" data-i18n="story1">It didn't start with a business plan. Raj was working at an Odoo implementation agency when he met Gor, and ended up working directly with him on his own company's Odoo setup, outside the agency relationship. Gor brought the business side: sales, growth, understanding what clients actually needed before a single module got configured. Raj brought the technical depth. What began as a working relationship grew into a real partnership, and over time, into something closer to family.</p>
+        <p style="color:var(--muted);font-size:15.5px;max-width:56ch;" data-i18n="story2">Odexa is what came out of that: Raj on technology, Gor on business and growth, and by now a small team of five to six working across live projects. Twenty-five-plus engagements later, across Odoo, Shopify, Zoho and AI Engineering, it's still run the way it started: hands-on, not handed off.</p>
       </div>
     </section>
 
     <section class="tight">
-      <div class="sec-head"><div><div class="eyebrow">Journey</div><h2>How we got here.</h2></div></div>
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="journeyEyebrow">Journey</div><h2 data-i18n="journeyH2">How we got here.</h2></div></div>
       <div class="timeline reveal">
         <div class="tl-item">
           <div class="yr">Jan 2021</div>
-          <div><h4>Odoo work begins</h4><p>Hands-on experience across Odoo implementations, consulting, configuration and support, builds the foundation everything else stands on.</p></div>
+          <div><h4 data-i18n="tl1H">Odoo work begins</h4><p data-i18n="tl1P">Hands-on experience across Odoo implementations, consulting, configuration and support, builds the foundation everything else stands on.</p></div>
         </div>
         <div class="tl-item">
           <div class="yr">2021 – 2023</div>
-          <div><h4>Range widens</h4><p>From functional consulting into development, server management and early AI-assisted workflows: learning the full stack around Odoo, not just the module.</p></div>
+          <div><h4 data-i18n="tl2H">Range widens</h4><p data-i18n="tl2P">From functional consulting into development, server management and early AI-assisted workflows: learning the full stack around Odoo, not just the module.</p></div>
         </div>
         <div class="tl-item">
           <div class="yr">Aug 2023</div>
-          <div><h4>Independent client work begins</h4><p>Engagements are taken on directly for the first time: consulting, development and support delivered end to end, under our own name rather than as part of another team.</p></div>
+          <div><h4 data-i18n="tl3H">Independent client work begins</h4><p data-i18n="tl3P">Engagements are taken on directly for the first time: consulting, development and support delivered end to end, under our own name rather than as part of another team.</p></div>
         </div>
         <div class="tl-item">
           <div class="yr">2026</div>
-          <div><h4>Odexa is formally registered</h4><p>The company is incorporated, giving already-running client work a proper legal, financial and operational structure to grow from.</p></div>
+          <div><h4 data-i18n="tl4H">Odexa is formally registered</h4><p data-i18n="tl4P">The company is incorporated, giving already-running client work a proper legal, financial and operational structure to grow from.</p></div>
         </div>
         <div class="tl-item">
-          <div class="yr">Today</div>
-          <div><h4>Full-stack systems partner</h4><p>With setups in Belgium and India, consulting, development, infrastructure, AI and integrations for clients across Europe, the Middle East and Asia.</p></div>
+          <div class="yr" data-i18n="tl5Yr">Today</div>
+          <div><h4 data-i18n="tl5H">Full-stack systems partner</h4><p data-i18n="tl5P">Based in Lommel, Belgium, consulting, development, infrastructure, AI and integrations for clients across Europe, the Middle East and Asia.</p></div>
         </div>
       </div>
     </section>
@@ -845,53 +871,53 @@ footer{
     <section class="tight">
       <div class="grid-2">
         <div>
-          <div class="eyebrow">Goal</div>
-          <h3 style="font-size:22px;margin-top:12px;">Stay hands-on as we grow, not just sell and hand off.</h3>
-          <p style="color:var(--muted);font-size:15px;margin-top:12px;">Raj still writes code. Gor still sits in on discovery calls. Twenty-five-plus projects in, that's the thing we don't want to lose: the people who scope an engagement are still around when it's live a year later.</p>
+          <div class="eyebrow" data-i18n="goalEyebrow">Goal</div>
+          <h3 style="font-size:22px;margin-top:12px;" data-i18n="goalH3">Stay hands-on as we grow, not just sell and hand off.</h3>
+          <p style="color:var(--muted);font-size:15px;margin-top:12px;" data-i18n="goalP">Raj still writes code. Gor still sits in on discovery calls. Twenty-five-plus projects in, that's the thing we don't want to lose: the people who scope an engagement are still around when it's live a year later.</p>
         </div>
         <div>
-          <div class="eyebrow">Inspiration</div>
-          <h3 style="font-size:22px;margin-top:12px;">Two different strengths, one system.</h3>
-          <p style="color:var(--muted);font-size:15px;margin-top:12px;">Gor reads a business and knows what it needs before the workshop ends. Raj can build most of it once he knows what's needed. Neither half works without the other, which is roughly how Odoo itself is supposed to work: separate, specialized parts that only make sense together.</p>
+          <div class="eyebrow" data-i18n="inspEyebrow">Inspiration</div>
+          <h3 style="font-size:22px;margin-top:12px;" data-i18n="inspH3">Two different strengths, one system.</h3>
+          <p style="color:var(--muted);font-size:15px;margin-top:12px;" data-i18n="inspP">Gor reads a business and knows what it needs before the workshop ends. Raj can build most of it once he knows what's needed. Neither half works without the other, which is roughly how Odoo itself is supposed to work: separate, specialized parts that only make sense together.</p>
         </div>
       </div>
     </section>
 
     <section class="tight">
-      <div class="sec-head"><div><div class="eyebrow">In practice</div><h2>What "end-to-end" actually covers.</h2></div><p>The same team stays involved from the first workshop through years of running the system, nothing gets handed off between separate vendors.</p></div>
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="practiceEyebrow">In practice</div><h2 data-i18n="practiceH2">What "end-to-end" actually covers.</h2></div><p data-i18n="practiceIntro">The same team stays involved from the first workshop through years of running the system, nothing gets handed off between separate vendors.</p></div>
       <div class="grid-3">
-        <div class="card"><h3 style="font-size:16px;">Before the build</h3><p>Requirement workshops, current-state analysis, and a written gap-fit assessment against the platform's standard setup, so the scope is based on how the business actually runs.</p></div>
-        <div class="card"><h3 style="font-size:16px;">During the build</h3><p>Configuration, custom development, integrations and infrastructure set up in parallel, tested in staged environments before anything reaches production.</p></div>
-        <div class="card"><h3 style="font-size:16px;">After go-live</h3><p>Server monitoring, backups, upgrades and a standing support channel: the team that built the system is the same one keeping it running.</p></div>
+        <div class="card"><h3 style="font-size:16px;" data-i18n="pract1H">Before the build</h3><p data-i18n="pract1P">Requirement workshops, current-state analysis, and a written gap-fit assessment against the platform's standard setup, so the scope is based on how the business actually runs.</p></div>
+        <div class="card"><h3 style="font-size:16px;" data-i18n="pract2H">During the build</h3><p data-i18n="pract2P">Configuration, custom development, integrations and infrastructure set up in parallel, tested in staged environments before anything reaches production.</p></div>
+        <div class="card"><h3 style="font-size:16px;" data-i18n="pract3H">After go-live</h3><p data-i18n="pract3P">Server monitoring, backups, upgrades and a standing support channel: the team that built the system is the same one keeping it running.</p></div>
       </div>
     </section>
 
     <section class="tight">
-      <div class="sec-head"><div><div class="eyebrow">How we work</div><h2>Values.</h2></div></div>
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="valuesEyebrow">How we work</div><h2 data-i18n="valuesH2">Values.</h2></div></div>
       <div class="values-grid">
-        <div class="value"><h4>Whoever scopes it, builds it</h4><p>The same person in the discovery workshop is usually the one writing the code, not a business analyst handing off a document to someone who wasn't in the room.</p></div>
-        <div class="value"><h4>No B-team for support</h4><p>Post-launch support doesn't quietly move to a cheaper, less senior team once the contract is signed. Same people, same standard, for as long as you need us.</p></div>
-        <div class="value"><h4>Small enough to stay hands-on</h4><p>A team of five or six means Raj and Gor are still on active projects, not just running the business from the top.</p></div>
+        <div class="value"><h4 data-i18n="val1H">Whoever scopes it, builds it</h4><p data-i18n="val1P">The same person in the discovery workshop is usually the one writing the code, not a business analyst handing off a document to someone who wasn't in the room.</p></div>
+        <div class="value"><h4 data-i18n="val2H">No B-team for support</h4><p data-i18n="val2P">Post-launch support doesn't quietly move to a cheaper, less senior team once the contract is signed. Same people, same standard, for as long as you need us.</p></div>
+        <div class="value"><h4 data-i18n="val3H">Small enough to stay hands-on</h4><p data-i18n="val3P">A team of five or six means Raj and Gor are still on active projects, not just running the business from the top.</p></div>
       </div>
     </section>
 
     <section class="tight">
-      <div class="sec-head"><div><div class="eyebrow">Team</div><h2>The people behind Odexa.</h2></div><p>Plus a small team of developers and consultants: five to six of us on active projects at any given time.</p></div>
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="teamEyebrow">Team</div><h2 data-i18n="teamH2">The people behind Odexa.</h2></div><p data-i18n="teamIntro">Plus a small team of developers and consultants: five to six of us on active projects at any given time.</p></div>
       <div class="team-grid">
-        <div class="team-card"><div class="avatar">R</div><h4>Raj</h4><p>Co-Founder, Technology</p></div>
-        <div class="team-card"><div class="avatar">G</div><h4>Gor</h4><p>Co-Founder, Business &amp; Growth</p></div>
+        <div class="team-card"><div class="avatar">R</div><h4>Raj</h4><p data-i18n="teamRajRole">Co-Founder, Technology</p></div>
+        <div class="team-card"><div class="avatar">G</div><h4>Gor</h4><p data-i18n="teamGorRole">Co-Founder, Business &amp; Growth</p></div>
       </div>
-      <p class="team-note">Individual profiles for the rest of the team are on their way.</p>
+      <p class="team-note" data-i18n="teamNote">Individual profiles for the rest of the team are on their way.</p>
     </section>
   </section>
 
   <!-- ============ CLIENTS ============ -->
   <section class="view" id="view-clients">
     <section>
-      <div class="eyebrow">Clientele</div>
-      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;">Real businesses, real systems.</h2>
-      <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;">Five engagements across five industries and three regions: distribution, manufacturing, trade, retail and B2B/B2C wholesale. Client names are withheld here; detailed case studies and references are available on request.</p>
-      <p style="color:var(--muted);max-width:56ch;margin-top:10px;font-size:13.5px;font-family:var(--mono);">Note: the case studies below are Odoo engagements. We've also delivered Shopify, Zoho and AI Engineering work for other clients; those case studies are being prepared.</p>
+      <div class="eyebrow" data-i18n="clientsEyebrow">Clientele</div>
+      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;" data-i18n="clientsH2">Real businesses, real systems.</h2>
+      <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;" data-i18n="clientsIntro">Five engagements across five industries and three regions: distribution, manufacturing, trade, retail and B2B/B2C wholesale. Client names are withheld here; detailed case studies and references are available on request.</p>
+      <p style="color:var(--muted);max-width:56ch;margin-top:10px;font-size:13.5px;font-family:var(--mono);" data-i18n="clientsNote">Note: the case studies below are Odoo engagements. We've also delivered Shopify, Zoho and AI Engineering work for other clients; those case studies are being prepared.</p>
     </section>
     <section class="tight" style="padding-top:0;">
       <div class="case-scroll" id="clientsGrid"></div>
@@ -899,10 +925,10 @@ footer{
     <section class="tight">
       <div class="cta-banner">
         <div>
-          <h2>Want the detailed version of one of these?</h2>
-          <p>Ask and we'll walk you through the actual scope, timeline and decisions. References available on request.</p>
+          <h2 data-i18n="clientsCtaH2">Want the detailed version of one of these?</h2>
+          <p data-i18n="clientsCtaP">Ask and we'll walk you through the actual scope, timeline and decisions. References available on request.</p>
         </div>
-        <a href="#/contact" class="btn btn-primary">Get in touch →</a>
+        <a href="#/contact" class="btn btn-primary" data-i18n="clientsCtaLink">Get in touch →</a>
       </div>
     </section>
   </section>
@@ -910,47 +936,99 @@ footer{
   <!-- ============ CONTACT ============ -->
   <section class="view" id="view-contact">
     <section>
-      <div class="eyebrow">Contact</div>
-      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:18ch;">Tell us the problem.</h2>
-      <p style="color:var(--muted);max-width:52ch;margin-top:14px;font-size:16px;">Describe what's going wrong, what's too manual, or what you wish just ran itself. We'll tell you honestly whether it's doable, roughly how, and which pricing model fits.</p>
+      <div class="eyebrow" data-i18n="startEyebrow">Start a project</div>
+      <h2 style="font-size:clamp(30px,4vw,42px);margin-top:14px;max-width:20ch;" data-i18n="startH2">Tell us the problem. We'll tell you if it's doable.</h2>
+      <p style="color:var(--muted);max-width:56ch;margin-top:14px;font-size:16px;" data-i18n="startIntro">Describe what's going wrong, what's too manual, or what you wish just ran itself. No sales pitch first, just a straight read on whether it's doable, roughly how, and which pricing model fits.</p>
     </section>
 
-    <section class="tight" style="padding-top:24px;">
+    <section class="tight" style="padding-top:0;">
+      <div class="sec-head"><div><div class="eyebrow" data-i18n="nextEyebrow">What happens next</div><h2 data-i18n="nextH2">Three steps, no pressure.</h2></div></div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg></div>
+          <h3 data-i18n="next1H">1. You describe it</h3>
+          <p data-i18n="next1P">Fill in the form below, as much or as little detail as you have. A vague problem is a fine place to start.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/></svg></div>
+          <h3 data-i18n="next2H">2. We scope it</h3>
+          <p data-i18n="next2P">We review what you've sent and work out whether it's doable, what it would take, and which pricing model actually fits.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+          <h3 data-i18n="next3H">3. We reply, honestly</h3>
+          <p data-i18n="next3P">Within one business day: a real answer, not a generic sales email. If it's not a fit, we'll say so.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tight">
       <div class="contact-grid">
         <div>
           <div class="info-block">
-            <span>Email</span>
+            <span data-i18n="infoEmail">Email</span>
             <a href="mailto:hello@odexa.eu">hello@odexa.eu</a>
           </div>
           <div class="info-block">
-            <span>Phone</span>
+            <span data-i18n="infoPhone">Phone</span>
             <p>+32 000 00 00 00</p>
           </div>
           <div class="info-block">
-            <span>Where we work</span>
-            <p>Setups in Lommel, Belgium and India.</p>
+            <span data-i18n="infoWhere">Where we work</span>
+            <p data-i18n="infoWhereP">Based in Lommel, Belgium.</p>
           </div>
           <div class="info-block">
-            <span>Response time</span>
-            <p>We reply within one business day.</p>
+            <span data-i18n="infoResponse">Response time</span>
+            <p data-i18n="infoResponseP">We reply within one business day.</p>
           </div>
         </div>
 
         <form id="contactForm">
           <div class="field-row">
-            <div class="field"><label for="fname">Name</label><input id="fname" type="text" required></div>
-            <div class="field"><label for="femail">Email</label><input id="femail" type="email" required></div>
+            <div class="field"><label for="fname" data-i18n="fName">Name</label><input id="fname" type="text" required></div>
+            <div class="field"><label for="femail" data-i18n="fEmail">Email</label><input id="femail" type="email" required></div>
           </div>
+          <div class="field-row">
+            <div class="field"><label for="fcompany" data-i18n="fCompany">Company</label><input id="fcompany" type="text"></div>
+            <div class="field"><label for="fphone" data-i18n="fPhone">Phone</label><input id="fphone" type="tel"></div>
+          </div>
+
           <div class="field">
-            <label for="fcompany">Company</label>
-            <input id="fcompany" type="text">
+            <label data-i18n="fSize">Company size</label>
+            <div class="pill-group">
+              <label class="pill-option"><input type="radio" name="fsize" value="Solo"><span data-i18n="sizeSolo">Solo</span></label>
+              <label class="pill-option"><input type="radio" name="fsize" value="2-10"><span data-i18n="size2">2-10 people</span></label>
+              <label class="pill-option"><input type="radio" name="fsize" value="11-50"><span data-i18n="size3">11-50 people</span></label>
+              <label class="pill-option"><input type="radio" name="fsize" value="50+"><span data-i18n="size4">50+ people</span></label>
+            </div>
           </div>
+
           <div class="field">
-            <label for="fmsg">What's the problem?</label>
-            <textarea id="fmsg" required placeholder="What's going wrong, what's manual today, or what you wish ran itself. We'll tell you if it's doable."></textarea>
+            <label data-i18n="fPriceModel">Which pricing model interests you?</label>
+            <div class="pill-group">
+              <label class="pill-option"><input type="radio" name="fprice" value="Per hour"><span data-i18n="priceHourShort">Per hour</span></label>
+              <label class="pill-option"><input type="radio" name="fprice" value="Per project"><span data-i18n="priceProjShort">Per project</span></label>
+              <label class="pill-option"><input type="radio" name="fprice" value="Zero upfront, monthly"><span data-i18n="priceZeroShort">Zero upfront, monthly</span></label>
+              <label class="pill-option"><input type="radio" name="fprice" value="Not sure yet" checked><span data-i18n="notSure">Not sure yet</span></label>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary">Send message →</button>
-          <div class="toast" id="formToast">Thanks. We'll review it and tell you honestly if it's doable, plus roughly how.</div>
+
+          <div class="field">
+            <label data-i18n="fTimeline">Timeline</label>
+            <div class="pill-group">
+              <label class="pill-option"><input type="radio" name="ftime" value="ASAP"><span data-i18n="timeAsap">ASAP</span></label>
+              <label class="pill-option"><input type="radio" name="ftime" value="1-3 months"><span data-i18n="time1">1-3 months</span></label>
+              <label class="pill-option"><input type="radio" name="ftime" value="3-6 months"><span data-i18n="time2">3-6 months</span></label>
+              <label class="pill-option"><input type="radio" name="ftime" value="Just exploring" checked><span data-i18n="timeExplore">Just exploring</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="fmsg" data-i18n="fProblem">What's the problem?</label>
+            <textarea id="fmsg" required placeholder="What's going wrong, what's manual today, or what you wish ran itself. We'll tell you if it's doable." data-i18n-placeholder="fProblemPlaceholder"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="fSend">Send message →</button>
+          <div class="toast" id="formToast" data-i18n="fToast">Thanks. We'll review it and tell you honestly if it's doable, plus roughly how.</div>
         </form>
       </div>
     </section>
@@ -961,31 +1039,31 @@ footer{
 <footer>
   <div class="wrap">
     <div class="footer-top">
-      <h3>Ready to put your systems to work?</h3>
+      <h3 data-i18n="footerH3">Ready to put your systems to work?</h3>
       <div class="footer-cols">
         <div class="footer-col">
-          <span>Site</span>
-          <a href="#/home">Home</a>
-          <a href="#/services">Services</a>
-          <a href="#/about">About</a>
-          <a href="#/clients">Clients</a>
-          <a href="#/contact">Contact</a>
+          <span data-i18n="footerSite">Site</span>
+          <a href="#/home" data-i18n="navHome">Home</a>
+          <a href="#/services" data-i18n="navServices">Services</a>
+          <a href="#/about" data-i18n="navAbout">About</a>
+          <a href="#/clients" data-i18n="navClients">Clients</a>
+          <a href="#/contact" data-i18n="navContact">Contact</a>
         </div>
         <div class="footer-col">
-          <span>Contact</span>
+          <span data-i18n="footerContact">Contact</span>
           <a href="mailto:hello@odexa.eu">hello@odexa.eu</a>
           <a href="#/contact">+32 000 00 00 00</a>
         </div>
         <div class="footer-col">
-          <span>Where we work</span>
-          <p>Lommel, Belgium · India</p>
-          <p>Remote-first · clients in Europe, the Middle East &amp; Asia</p>
+          <span data-i18n="footerWhere">Where we work</span>
+          <p>Lommel, Belgium</p>
+          <p data-i18n="footerRemote">Remote-first · clients in Europe, the Middle East &amp; Asia</p>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="yr"></span> Odexa: Consulting-led systems &amp; AI, engineered end-to-end.</span>
-      <span>Odoo experience since 2021 · Independent since 2023 · Registered 2026</span>
+      <span>© <span id="yr"></span> <span data-i18n="footerTagline">Odexa: Consulting-led systems &amp; AI, engineered end-to-end.</span></span>
+      <span data-i18n="footerHistory">Odoo experience since 2021 · Independent since 2023 · Registered 2026</span>
     </div>
   </div>
 </footer>
@@ -998,12 +1076,12 @@ footer{
 
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <strong>Ask Odexa</strong>
-    <span>Usually answers instantly · real people for anything else</span>
+    <strong data-i18n="chatTitle">Ask Odexa</strong>
+    <span data-i18n="chatSubtitle">Usually answers instantly · real people for anything else</span>
   </div>
   <div class="chat-body" id="chatBody"></div>
   <div class="chat-input-row">
-    <input type="text" id="chatInput" placeholder="Ask about services, platforms, contact…" autocomplete="off">
+    <input type="text" id="chatInput" placeholder="Ask about services, platforms, contact…" data-i18n-placeholder="chatInputPlaceholder" autocomplete="off">
     <button id="chatSend" aria-label="Send">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-9 20-3-9-9-3 21-8Z"/></svg>
     </button>
@@ -1011,31 +1089,399 @@ footer{
 </div>
 
 <script>
+let currentLang = 'en';
+
+/* ============ I18N DICTIONARY ============ */
+const I18N = {
+ en: {
+  navHome: "Home",
+  navServices: "Services",
+  navAbout: "About",
+  navClients: "Clients",
+  navContact: "Contact",
+  navCta: "Start a project",
+  heroEyebrow: "Systems consulting &amp; development · since 2021",
+  heroH1: "We help businesses get their systems right. <em>End to end.</em>",
+  heroLede: "25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering. Same consulting-first approach, whichever platform the work is on.",
+  heroCtaPrimary: "Start a project →",
+  heroCtaGhost: "See what we do",
+  heroPill1: "Odoo · Shopify · Zoho",
+  heroPill2: "25+ projects delivered",
+  heroPill3: "Sales, marketing &amp; task automation",
+  capConsult: "Consult",
+  capDiscover: "Discover",
+  capIntegrate: "Integrate",
+  stat1: "Odoo experience began",
+  stat2: "Independent client work began",
+  stat3: "Odexa formally registered",
+  stat4: "Projects delivered",
+  homeWhatEyebrow: "What we do",
+  homeWhatH2: "One partner, your systems end to end.",
+  homeWhatLink: "All services →",
+  homePriceEyebrow: "How this works",
+  homePriceH2: "You don't pay until it's running.",
+  homePriceLink: "Get a scope check →",
+  homePriceIntro: "Tell us the problem. We design it, build it, and hand it over, then you pay monthly, not by the hour, and not for a project that might never launch.",
+  priceHourTitle: "Pay per hour",
+  priceHourDesc: "Straightforward hourly billing for advisory, fixes, or ad hoc development. No fixed scope required.",
+  priceHourB1: "Time-tracked work",
+  priceHourB2: "Invoiced monthly",
+  priceHourB3: "No minimum commitment",
+  priceProjTitle: "Pay per project",
+  priceProjDesc: "A defined scope, timeline and fixed price agreed upfront. Best when requirements are already clear.",
+  priceProjB1: "Scoped deliverables",
+  priceProjB2: "Milestone-based delivery",
+  priceProjB3: "Fixed price agreed upfront",
+  priceSubBadge: "The idea we believe in",
+  priceSubTitle: "Zero upfront, pay monthly",
+  priceSubDesc: "You tell us the problem. We build it and hand it over, then you pay a monthly subscription for it, not a project invoice.",
+  priceSubB1: "No upfront build cost",
+  ctaTalkH2: "Let's talk about your systems.",
+  ctaTalkP: "No strings attached, just a straight conversation about where your systems stand today and what we'd do about it.",
+  svcEyebrow: "Services",
+  svcH2: "Every platform, end to end.",
+  svcIntro: "25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering: real delivery work on each, not services we've only listed on a page.",
+  procEyebrow: "How an engagement runs",
+  procH2: "Five stages, one continuous handoff.",
+  procIntro: "Not every project needs all five; a support retainer might start at stage 4. But this is the order work moves through when we run it end to end.",
+  proc1Yr: "01. Discover",
+  proc1H: "Requirement gathering &amp; analysis",
+  proc1P: "Workshops with the people who'll actually use the system, a review of current tools and data, and a written gap-fit analysis against the platform's standard setup before any custom work is proposed.",
+  proc2Yr: "02. Scope",
+  proc2H: "Solution design &amp; proposal",
+  proc2P: "A concrete scope: which modules, what's configured vs. custom-built, which systems need to integrate, and what the environment (cloud or on-premise) needs to look like, with effort and timeline attached.",
+  proc3Yr: "03. Build",
+  proc3H: "Configuration &amp; development",
+  proc3P: "Module setup, custom development, integrations and any AI components are built against the agreed scope, with staged environments so nothing hits production untested.",
+  proc4Yr: "04. Launch",
+  proc4H: "Migration, training &amp; go-live",
+  proc4P: "Data migration, user training, and a go-live plan with a rollback path. Go-live is treated as an operational event, not a handover email.",
+  proc5Yr: "05. Operate",
+  proc5H: "Support, hosting &amp; iteration",
+  proc5P: "Server monitoring, patching and backups, plus a standing channel for fixes, small enhancements and the next round of requirements as the business changes.",
+  pricingEyebrow: "Pricing",
+  pricingH2: "Three ways to pay.",
+  pricingIntro: "Pick whichever fits how sure you are about scope, and how much risk you want us to carry.",
+  priceSubTitleAlt: "Zero upfront, pay monthly",
+  priceSubDescAlt: "Tell us the problem. We design, build and hand over the solution, then you pay a monthly subscription for it, not a project invoice.",
+  ctaProblemH2: "Have a problem, not a spec?",
+  ctaProblemP: "Describe what's going wrong or what you wish ran itself. We'll tell you honestly whether it's doable, and roughly how.",
+  ctaScopeLink: "Get a scope check →",
+  aboutEyebrow: "About",
+  aboutH2: "Systems people, longer than we've been a company.",
+  aboutIntro: "The work started in January 2021, with hands-on Odoo implementation, consulting and support. In August 2023, that experience turned into independent client work: taking on engagements directly, end to end, instead of as part of someone else's team. Odexa was formally registered as a company in 2026, putting a legal and operational structure around work that was already running. Today that covers Odoo, Shopify, Zoho and AI Engineering, real delivery work across all four.",
+  storyEyebrow: "Our story",
+  storyH2: "How this actually started.",
+  story1: "It didn't start with a business plan. Raj was working at an Odoo implementation agency when he met Gor, and ended up working directly with him on his own company's Odoo setup, outside the agency relationship. Gor brought the business side: sales, growth, understanding what clients actually needed before a single module got configured. Raj brought the technical depth. What began as a working relationship grew into a real partnership, and over time, into something closer to family.",
+  story2: "Odexa is what came out of that: Raj on technology, Gor on business and growth, and by now a small team of five to six working across live projects. Twenty-five-plus engagements later, across Odoo, Shopify, Zoho and AI Engineering, it's still run the way it started: hands-on, not handed off.",
+  journeyEyebrow: "Journey",
+  journeyH2: "How we got here.",
+  tl1H: "Odoo work begins",
+  tl1P: "Hands-on experience across Odoo implementations, consulting, configuration and support, builds the foundation everything else stands on.",
+  tl2H: "Range widens",
+  tl2P: "From functional consulting into development, server management and early AI-assisted workflows: learning the full stack around Odoo, not just the module.",
+  tl3H: "Independent client work begins",
+  tl3P: "Engagements are taken on directly for the first time: consulting, development and support delivered end to end, under our own name rather than as part of another team.",
+  tl4H: "Odexa is formally registered",
+  tl4P: "The company is incorporated, giving already-running client work a proper legal, financial and operational structure to grow from.",
+  tl5Yr: "Today",
+  tl5H: "Full-stack systems partner",
+  tl5P: "Based in Lommel, Belgium, consulting, development, infrastructure, AI and integrations for clients across Europe, the Middle East and Asia.",
+  goalEyebrow: "Goal",
+  goalH3: "Stay hands-on as we grow, not just sell and hand off.",
+  goalP: "Raj still writes code. Gor still sits in on discovery calls. Twenty-five-plus projects in, that's the thing we don't want to lose: the people who scope an engagement are still around when it's live a year later.",
+  inspEyebrow: "Inspiration",
+  inspH3: "Two different strengths, one system.",
+  inspP: "Gor reads a business and knows what it needs before the workshop ends. Raj can build most of it once he knows what's needed. Neither half works without the other, which is roughly how Odoo itself is supposed to work: separate, specialized parts that only make sense together.",
+  practiceEyebrow: "In practice",
+  practiceH2: "What \"end-to-end\" actually covers.",
+  practiceIntro: "The same team stays involved from the first workshop through years of running the system, nothing gets handed off between separate vendors.",
+  pract1H: "Before the build",
+  pract1P: "Requirement workshops, current-state analysis, and a written gap-fit assessment against the platform's standard setup, so the scope is based on how the business actually runs.",
+  pract2H: "During the build",
+  pract2P: "Configuration, custom development, integrations and infrastructure set up in parallel, tested in staged environments before anything reaches production.",
+  pract3H: "After go-live",
+  pract3P: "Server monitoring, backups, upgrades and a standing support channel: the team that built the system is the same one keeping it running.",
+  valuesEyebrow: "How we work",
+  valuesH2: "Values.",
+  val1H: "Whoever scopes it, builds it",
+  val1P: "The same person in the discovery workshop is usually the one writing the code, not a business analyst handing off a document to someone who wasn't in the room.",
+  val2H: "No B-team for support",
+  val2P: "Post-launch support doesn't quietly move to a cheaper, less senior team once the contract is signed. Same people, same standard, for as long as you need us.",
+  val3H: "Small enough to stay hands-on",
+  val3P: "A team of five or six means Raj and Gor are still on active projects, not just running the business from the top.",
+  teamEyebrow: "Team",
+  teamH2: "The people behind Odexa.",
+  teamIntro: "Plus a small team of developers and consultants: five to six of us on active projects at any given time.",
+  teamRajRole: "Co-Founder, Technology",
+  teamGorRole: "Co-Founder, Business &amp; Growth",
+  teamNote: "Individual profiles for the rest of the team are on their way.",
+  clientsEyebrow: "Clientele",
+  clientsH2: "Real businesses, real systems.",
+  clientsIntro: "Five engagements across five industries and three regions: distribution, manufacturing, trade, retail and B2B/B2C wholesale. Client names are withheld here; detailed case studies and references are available on request.",
+  clientsNote: "Note: the case studies below are Odoo engagements. We've also delivered Shopify, Zoho and AI Engineering work for other clients; those case studies are being prepared.",
+  clientsCtaH2: "Want the detailed version of one of these?",
+  clientsCtaP: "Ask and we'll walk you through the actual scope, timeline and decisions. References available on request.",
+  clientsCtaLink: "Get in touch →",
+  startEyebrow: "Start a project",
+  startH2: "Tell us the problem. We'll tell you if it's doable.",
+  startIntro: "Describe what's going wrong, what's too manual, or what you wish just ran itself. No sales pitch first, just a straight read on whether it's doable, roughly how, and which pricing model fits.",
+  nextEyebrow: "What happens next",
+  nextH2: "Three steps, no pressure.",
+  next1H: "1. You describe it",
+  next1P: "Fill in the form below, as much or as little detail as you have. A vague problem is a fine place to start.",
+  next2H: "2. We scope it",
+  next2P: "We review what you've sent and work out whether it's doable, what it would take, and which pricing model actually fits.",
+  next3H: "3. We reply, honestly",
+  next3P: "Within one business day: a real answer, not a generic sales email. If it's not a fit, we'll say so.",
+  infoEmail: "Email",
+  infoPhone: "Phone",
+  infoWhere: "Where we work",
+  infoWhereP: "Based in Lommel, Belgium.",
+  infoResponse: "Response time",
+  infoResponseP: "We reply within one business day.",
+  fName: "Name",
+  fEmail: "Email",
+  fCompany: "Company",
+  fPhone: "Phone",
+  fSize: "Company size",
+  sizeSolo: "Solo",
+  size2: "2-10 people",
+  size3: "11-50 people",
+  size4: "50+ people",
+  fPriceModel: "Which pricing model interests you?",
+  priceHourShort: "Per hour",
+  priceProjShort: "Per project",
+  priceZeroShort: "Zero upfront, monthly",
+  notSure: "Not sure yet",
+  fTimeline: "Timeline",
+  timeAsap: "ASAP",
+  time1: "1-3 months",
+  time2: "3-6 months",
+  timeExplore: "Just exploring",
+  fProblem: "What's the problem?",
+  fSend: "Send message →",
+  fToast: "Thanks. We'll review it and tell you honestly if it's doable, plus roughly how.",
+  footerH3: "Ready to put your systems to work?",
+  footerSite: "Site",
+  footerContact: "Contact",
+  footerWhere: "Where we work",
+  footerRemote: "Remote-first · clients in Europe, the Middle East &amp; Asia",
+  footerTagline: "Odexa: Consulting-led systems &amp; AI, engineered end-to-end.",
+  footerHistory: "Odoo experience since 2021 · Independent since 2023 · Registered 2026",
+  chatTitle: "Ask Odexa",
+  chatSubtitle: "Usually answers instantly · real people for anything else",
+  fProblemPlaceholder: "What's going wrong, what's manual today, or what you wish ran itself. We'll tell you if it's doable.",
+  chatInputPlaceholder: "Ask about services, platforms, contact…",
+ },
+ nl: {
+  navHome: "Home",
+  navServices: "Diensten",
+  navAbout: "Over ons",
+  navClients: "Klanten",
+  navContact: "Contact",
+  navCta: "Start een project",
+  heroEyebrow: "Systemenadvies &amp; ontwikkeling · sinds 2021",
+  heroH1: "Wij helpen bedrijven hun systemen goed te krijgen. <em>Van a tot z.</em>",
+  heroLede: "25+ projecten opgeleverd binnen Odoo, Shopify, Zoho en AI Engineering. Dezelfde consulting-first aanpak, op elk platform.",
+  heroCtaPrimary: "Start een project →",
+  heroCtaGhost: "Bekijk wat we doen",
+  heroPill1: "Odoo · Shopify · Zoho",
+  heroPill2: "25+ projecten opgeleverd",
+  heroPill3: "Sales-, marketing- &amp; taakautomatisering",
+  capConsult: "Advies",
+  capDiscover: "Verkennen",
+  capIntegrate: "Koppelen",
+  stat1: "Odoo-ervaring sinds",
+  stat2: "Zelfstandig klantenwerk sinds",
+  stat3: "Odexa formeel geregistreerd",
+  stat4: "Projecten opgeleverd",
+  homeWhatEyebrow: "Wat we doen",
+  homeWhatH2: "Eén partner voor je systemen, van a tot z.",
+  homeWhatLink: "Alle diensten →",
+  homePriceEyebrow: "Hoe dit werkt",
+  homePriceH2: "Je betaalt pas als het draait.",
+  homePriceLink: "Vraag een scope check aan →",
+  homePriceIntro: "Vertel ons het probleem. Wij ontwerpen het, bouwen het, en dragen het over. Daarna betaal je maandelijks, niet per uur, en niet voor een project dat misschien nooit live gaat.",
+  priceHourTitle: "Betalen per uur",
+  priceHourDesc: "Eenvoudige uurfacturatie voor advies, fixes of ad-hoc ontwikkeling. Geen vaste scope nodig.",
+  priceHourB1: "Tijd bijgehouden",
+  priceHourB2: "Maandelijks gefactureerd",
+  priceHourB3: "Geen minimumafname",
+  priceProjTitle: "Betalen per project",
+  priceProjDesc: "Een vastgestelde scope, planning en vaste prijs, vooraf afgesproken. Ideaal wanneer de eisen al duidelijk zijn.",
+  priceProjB1: "Afgebakende opleveringen",
+  priceProjB2: "Levering per mijlpaal",
+  priceProjB3: "Vaste prijs vooraf afgesproken",
+  priceSubBadge: "Het idee waar we in geloven",
+  priceSubTitle: "Geen kosten vooraf, maandelijks betalen",
+  priceSubDesc: "Jij vertelt ons het probleem. Wij bouwen het en dragen het over. Daarna betaal je een maandelijks abonnement ervoor, geen projectfactuur.",
+  priceSubB1: "Geen bouwkosten vooraf",
+  ctaTalkH2: "Laten we het over je systemen hebben.",
+  ctaTalkP: "Geen verplichtingen, gewoon een eerlijk gesprek over waar je systemen nu staan en wat we daaraan zouden doen.",
+  svcEyebrow: "Diensten",
+  svcH2: "Elk platform, van a tot z.",
+  svcIntro: "25+ projecten opgeleverd binnen Odoo, Shopify, Zoho en AI Engineering: echt uitgevoerd werk op elk vlak, geen diensten die we alleen maar op een lijstje hebben staan.",
+  procEyebrow: "Hoe een traject verloopt",
+  procH2: "Vijf fases, één doorlopende overdracht.",
+  procIntro: "Niet elk project heeft alle vijf fases nodig; een supportabonnement kan bijvoorbeeld bij fase 4 beginnen. Maar dit is de volgorde wanneer we het volledig van a tot z uitvoeren.",
+  proc1Yr: "01. Verkennen",
+  proc1H: "Requirements verzamelen &amp; analyse",
+  proc1P: "Workshops met de mensen die het systeem echt gaan gebruiken, een overzicht van huidige tools en data, en een schriftelijke gap-fit analyse tegen de standaardopzet van het platform, voordat er maatwerk wordt voorgesteld.",
+  proc2Yr: "02. Scope",
+  proc2H: "Oplossingsontwerp &amp; voorstel",
+  proc2P: "Een concrete scope: welke modules, wat wordt geconfigureerd versus maatwerk, welke systemen moeten koppelen, en hoe de omgeving (cloud of on-premise) eruit moet zien, met inspanning en planning erbij.",
+  proc3Yr: "03. Bouwen",
+  proc3H: "Configuratie &amp; ontwikkeling",
+  proc3P: "Configuratie, maatwerkontwikkeling, koppelingen en eventuele AI-onderdelen worden gebouwd volgens de afgesproken scope, met gefaseerde omgevingen zodat niets ongetest in productie komt.",
+  proc4Yr: "04. Livegang",
+  proc4H: "Migratie, training &amp; livegang",
+  proc4P: "Datamigratie, gebruikerstraining, en een livegangplan met een terugvalscenario. Livegang wordt behandeld als een operationele gebeurtenis, niet als een overdrachtsmail.",
+  proc5Yr: "05. Beheer",
+  proc5H: "Support, hosting &amp; doorontwikkeling",
+  proc5P: "Servermonitoring, patches en back-ups, plus een vast aanspreekpunt voor fixes, kleine verbeteringen en de volgende ronde requirements naarmate het bedrijf verandert.",
+  pricingEyebrow: "Prijzen",
+  pricingH2: "Drie manieren om te betalen.",
+  pricingIntro: "Kies wat past bij hoe zeker je bent over de scope, en hoeveel risico je bij ons wilt leggen.",
+  priceSubTitleAlt: "Geen kosten vooraf, maandelijks betalen",
+  priceSubDescAlt: "Vertel ons het probleem. Wij ontwerpen, bouwen en dragen de oplossing over. Daarna betaal je een maandelijks abonnement ervoor, geen projectfactuur.",
+  ctaProblemH2: "Heb je een probleem, geen bestek?",
+  ctaProblemP: "Beschrijf wat er misgaat of wat je zou willen dat vanzelf liep. We vertellen je eerlijk of het haalbaar is, en ruwweg hoe.",
+  ctaScopeLink: "Vraag een scope check aan →",
+  aboutEyebrow: "Over ons",
+  aboutH2: "Systeemmensen, al langer dan we een bedrijf zijn.",
+  aboutIntro: "Het werk begon in januari 2021, met hands-on Odoo-implementatie, advies en support. In augustus 2023 werd die ervaring zelfstandig klantenwerk: opdrachten rechtstreeks aannemen, volledig van a tot z, in plaats van als onderdeel van iemand anders' team. Odexa werd in 2026 formeel als bedrijf geregistreerd, waarmee er een juridische en operationele structuur kwam rond werk dat al liep. Vandaag omvat dat Odoo, Shopify, Zoho en AI Engineering, echt uitgevoerd werk op alle vier.",
+  storyEyebrow: "Ons verhaal",
+  storyH2: "Hoe dit eigenlijk begon.",
+  story1: "Het begon niet met een businessplan. Raj werkte bij een Odoo-implementatiebureau toen hij Gor ontmoette, en kwam rechtstreeks bij hem terecht om aan het Odoo-systeem van zijn eigen bedrijf te werken, los van het bureau. Gor bracht de zakelijke kant mee: sales, groei, weten wat klanten echt nodig hadden nog voordat er één module was geconfigureerd. Raj bracht de technische diepgang. Wat begon als een werkrelatie groeide uit tot een echt partnerschap, en met de tijd tot iets dat op familie begon te lijken.",
+  story2: "Odexa is daaruit ontstaan: Raj op technologie, Gor op business en groei, en inmiddels een klein team van vijf tot zes mensen op actieve projecten. Vijfentwintig-plus opdrachten later, binnen Odoo, Shopify, Zoho en AI Engineering, wordt het nog altijd gerund zoals het begon: hands-on, niet overgedragen.",
+  journeyEyebrow: "Traject",
+  journeyH2: "Hoe we hier zijn gekomen.",
+  tl1H: "Odoo-werk begint",
+  tl1P: "Hands-on ervaring met Odoo-implementaties, advies, configuratie en support, legt de basis waar al het andere op voortbouwt.",
+  tl2H: "Werkveld breidt uit",
+  tl2P: "Van functioneel advies naar ontwikkeling, serverbeheer en vroege AI-ondersteunde workflows: de hele stack rond Odoo leren kennen, niet alleen de module.",
+  tl3H: "Zelfstandig klantenwerk begint",
+  tl3P: "Voor het eerst worden opdrachten rechtstreeks aangenomen: advies, ontwikkeling en support volledig van a tot z geleverd, onder eigen naam in plaats van als onderdeel van een ander team.",
+  tl4H: "Odexa wordt formeel geregistreerd",
+  tl4P: "Het bedrijf wordt opgericht, waarmee al lopend klantenwerk een echte juridische, financiële en operationele structuur krijgt om vanuit te groeien.",
+  tl5Yr: "Vandaag",
+  tl5H: "Full-stack systemenpartner",
+  tl5P: "Gevestigd in Lommel, België: advies, ontwikkeling, infrastructuur, AI en koppelingen voor klanten in Europa, het Midden-Oosten en Azië.",
+  goalEyebrow: "Doel",
+  goalH3: "Hands-on blijven terwijl we groeien, niet alleen verkopen en overdragen.",
+  goalP: "Raj schrijft nog steeds code. Gor zit nog steeds bij intakegesprekken. Vijfentwintig-plus projecten verder is dat het ding dat we niet kwijt willen: de mensen die een traject scopen, zijn er nog als het een jaar later live staat.",
+  inspEyebrow: "Inspiratie",
+  inspH3: "Twee verschillende sterktes, één systeem.",
+  inspP: "Gor doorziet een bedrijf en weet wat het nodig heeft nog voor de workshop is afgelopen. Raj kan het meeste bouwen zodra hij weet wat nodig is. De ene helft werkt niet zonder de andere, wat ongeveer is hoe Odoo zelf ook is bedoeld: losse, gespecialiseerde onderdelen die alleen samen ergens toe leiden.",
+  practiceEyebrow: "In de praktijk",
+  practiceH2: "Wat \"van a tot z\" eigenlijk inhoudt.",
+  practiceIntro: "Hetzelfde team blijft betrokken vanaf de eerste workshop tot jaren van beheer erna, niets wordt overgedragen tussen losse leveranciers.",
+  pract1H: "Voor de bouw",
+  pract1P: "Requirementworkshops, analyse van de huidige situatie, en een schriftelijke gap-fit beoordeling tegen de standaardopzet van het platform, zodat de scope gebaseerd is op hoe het bedrijf echt werkt.",
+  pract2H: "Tijdens de bouw",
+  pract2P: "Configuratie, maatwerkontwikkeling, koppelingen en infrastructuur parallel opgezet, getest in gefaseerde omgevingen voordat iets productie bereikt.",
+  pract3H: "Na livegang",
+  pract3P: "Servermonitoring, back-ups, upgrades en een vast supportkanaal: het team dat het systeem bouwde is hetzelfde team dat het draaiend houdt.",
+  valuesEyebrow: "Hoe we werken",
+  valuesH2: "Waarden.",
+  val1H: "Wie het scopet, bouwt het",
+  val1P: "Dezelfde persoon uit de intakeworkshop is meestal ook degene die de code schrijft, niet een analist die een document overdraagt aan iemand die er niet bij was.",
+  val2H: "Geen B-team voor support",
+  val2P: "Support na livegang verhuist niet stilletjes naar een goedkoper, minder ervaren team zodra het contract getekend is. Dezelfde mensen, dezelfde standaard, zolang je ons nodig hebt.",
+  val3H: "Klein genoeg om hands-on te blijven",
+  val3P: "Een team van vijf of zes betekent dat Raj en Gor nog op actieve projecten zitten, niet alleen het bedrijf vanaf de zijlijn runnen.",
+  teamEyebrow: "Team",
+  teamH2: "De mensen achter Odexa.",
+  teamIntro: "Plus een klein team van developers en consultants: vijf tot zes van ons op actieve projecten, op elk moment.",
+  teamRajRole: "Medeoprichter, Technologie",
+  teamGorRole: "Medeoprichter, Business &amp; Groei",
+  teamNote: "Individuele profielen van de rest van het team volgen binnenkort.",
+  clientsEyebrow: "Klantenkring",
+  clientsH2: "Echte bedrijven, echte systemen.",
+  clientsIntro: "Vijf trajecten binnen vijf sectoren en drie regio's: distributie, productie, handel, retail en B2B/B2C groothandel. Klantnamen worden hier niet vermeld; uitgebreide cases en referenties zijn op aanvraag beschikbaar.",
+  clientsNote: "Let op: de cases hieronder zijn Odoo-trajecten. We hebben ook Shopify-, Zoho- en AI Engineering-werk geleverd voor andere klanten; die cases worden nog voorbereid.",
+  clientsCtaH2: "Wil je de uitgebreide versie van een van deze?",
+  clientsCtaP: "Vraag ernaar en we lopen de echte scope, planning en keuzes met je door. Referenties op aanvraag.",
+  clientsCtaLink: "Neem contact op →",
+  startEyebrow: "Start een project",
+  startH2: "Vertel ons het probleem. Wij zeggen of het haalbaar is.",
+  startIntro: "Beschrijf wat er misgaat, wat te veel handwerk is, of wat je zou willen dat vanzelf liep. Geen verkooppraatje vooraf, gewoon een eerlijk antwoord of het haalbaar is, ruwweg hoe, en welk prijsmodel past.",
+  nextEyebrow: "Wat er daarna gebeurt",
+  nextH2: "Drie stappen, geen druk.",
+  next1H: "1. Jij beschrijft het",
+  next1P: "Vul het formulier hieronder in, met zoveel of zo weinig detail als je hebt. Een vaag probleem is een prima startpunt.",
+  next2H: "2. Wij scopen het",
+  next2P: "We bekijken wat je hebt gestuurd en zoeken uit of het haalbaar is, wat het zou vragen, en welk prijsmodel echt past.",
+  next3H: "3. Wij reageren, eerlijk",
+  next3P: "Binnen één werkdag: een echt antwoord, geen generieke verkoopmail. Als het geen match is, zeggen we dat ook.",
+  infoEmail: "E-mail",
+  infoPhone: "Telefoon",
+  infoWhere: "Waar we werken",
+  infoWhereP: "Gevestigd in Lommel, België.",
+  infoResponse: "Reactietijd",
+  infoResponseP: "We reageren binnen één werkdag.",
+  fName: "Naam",
+  fEmail: "E-mail",
+  fCompany: "Bedrijf",
+  fPhone: "Telefoon",
+  fSize: "Bedrijfsgrootte",
+  sizeSolo: "Zelfstandig",
+  size2: "2-10 personen",
+  size3: "11-50 personen",
+  size4: "50+ personen",
+  fPriceModel: "Welk prijsmodel spreekt je aan?",
+  priceHourShort: "Per uur",
+  priceProjShort: "Per project",
+  priceZeroShort: "Geen kosten vooraf, maandelijks",
+  notSure: "Nog niet zeker",
+  fTimeline: "Tijdlijn",
+  timeAsap: "Zo snel mogelijk",
+  time1: "1-3 maanden",
+  time2: "3-6 maanden",
+  timeExplore: "Nog aan het verkennen",
+  fProblem: "Wat is het probleem?",
+  fSend: "Bericht versturen →",
+  fToast: "Bedankt. We bekijken het en laten je eerlijk weten of het haalbaar is, plus ruwweg hoe.",
+  footerH3: "Klaar om je systemen aan het werk te zetten?",
+  footerSite: "Site",
+  footerContact: "Contact",
+  footerWhere: "Waar we werken",
+  footerRemote: "Remote-first · klanten in Europa, het Midden-Oosten &amp; Azië",
+  footerTagline: "Odexa: consulting-led systemen &amp; AI, van a tot z uitgevoerd.",
+  footerHistory: "Odoo-ervaring sinds 2021 · Zelfstandig sinds 2023 · Geregistreerd 2026",
+  chatTitle: "Vraag het Odexa",
+  chatSubtitle: "Antwoordt meestal meteen · echte mensen voor de rest",
+  fProblemPlaceholder: "Wat er misgaat, wat vandaag handwerk is, of wat je zou willen dat vanzelf liep. We laten je weten of het haalbaar is.",
+  chatInputPlaceholder: "Vraag naar diensten, platformen, contact…",
+ },
+};
+
 /* ============ DATA ============ */
 const SERVICES = [
   // Consulting & Advisory
-  { cat:'Consulting & Advisory', icon:'<circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/>', title:'Pre-Sales & Discovery', desc:'Requirement gathering, analysis and system consulting before a platform is even chosen.', bullets:['Stakeholder workshops','Current-state process mapping','Gap-fit analysis','Solution proposals & scoping'] },
-  { cat:'Consulting & Advisory', icon:'<path d="M4 6h16M4 12h16M4 18h10"/>', title:'Solution Consulting', desc:'Independent advice on which system fits (ERP, commerce platform, or a mix) and how it should be structured.', bullets:['Platform selection & roadmap','Best-practice process design','Health checks on existing systems','Ongoing advisory'] },
+  { cat:{en:'Consulting & Advisory',nl:'Consulting & Advies'}, icon:'<circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/>', title:{en:'Pre-Sales & Discovery',nl:'Pre-Sales & Discovery'}, desc:{en:'Requirement gathering, analysis and system consulting before a platform is even chosen.',nl:'Requirements verzamelen, analyse en systeemadvies nog voordat er een platform gekozen is.'}, bullets:{en:['Stakeholder workshops','Current-state process mapping','Gap-fit analysis','Solution proposals & scoping'],nl:['Stakeholderworkshops','In kaart brengen van huidige processen','Gap-fit analyse','Oplossingsvoorstellen & scoping']} },
+  { cat:{en:'Consulting & Advisory',nl:'Consulting & Advies'}, icon:'<path d="M4 6h16M4 12h16M4 18h10"/>', title:{en:'Solution Consulting',nl:'Oplossingsadvies'}, desc:{en:'Independent advice on which system fits (ERP, commerce platform, or a mix) and how it should be structured.',nl:'Onafhankelijk advies over welk systeem past (ERP, e-commerceplatform, of een combinatie) en hoe het opgezet moet worden.'}, bullets:{en:['Platform selection & roadmap','Best-practice process design','Health checks on existing systems','Ongoing advisory'],nl:['Platformkeuze & roadmap','Procesontwerp volgens best practices','Health checks van bestaande systemen','Doorlopend advies']} },
   // Platforms, presented equally, no single one framed as primary
-  { cat:'Platforms We Work On', icon:'<path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/>', title:'Odoo', desc:'Odoo is meant to be the backbone of a business, not a system you fight with every quarter. We treat implementation as the start, not the finish line: configuration, custom development and the years of running it after go-live.', bullets:['Custom module development','Workflow & approval automation','Reporting & dashboards','Version upgrades & migrations'] },
-  { cat:'Platforms We Work On', icon:'<path d="M6 8V6a4 4 0 0 1 8 0v2M4 8h12l1 12H3L4 8Z"/><circle cx="10" cy="12" r="1.2" fill="currentColor"/>', title:'Shopify', desc:'Storefronts and backend flows delivered for merchants who needed commerce and operations connected.', bullets:['Store setup & theme customization','Custom apps & checkout logic','Inventory & order sync','Odoo ↔ Shopify integration'] },
-  { cat:'Platforms We Work On', icon:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/>', title:'Zoho', desc:'Consulting and integration work delivered for organizations running Zoho alongside other systems.', bullets:['Functional consulting','Module configuration','Reporting & data extraction','Cross-system integration'] },
+  { cat:{en:'Platforms We Work On',nl:'Platformen waarmee we werken'}, icon:'<path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/>', title:{en:'Odoo',nl:'Odoo'}, desc:{en:'Odoo is meant to be the backbone of a business, not a system you fight with every quarter. We treat implementation as the start, not the finish line: configuration, custom development and the years of running it after go-live.',nl:'Odoo hoort de ruggengraat van een bedrijf te zijn, geen systeem waar je elk kwartaal tegen vecht. Voor ons is implementatie het startpunt, niet het eindpunt: configuratie, maatwerk en de jaren van beheer na livegang.'}, bullets:{en:['Custom module development','Workflow & approval automation','Reporting & dashboards','Version upgrades & migrations'],nl:['Maatwerk moduleontwikkeling','Workflow- & goedkeuringsautomatisering','Rapportages & dashboards','Versie-upgrades & migraties']} },
+  { cat:{en:'Platforms We Work On',nl:'Platformen waarmee we werken'}, icon:'<path d="M6 8V6a4 4 0 0 1 8 0v2M4 8h12l1 12H3L4 8Z"/><circle cx="10" cy="12" r="1.2" fill="currentColor"/>', title:{en:'Shopify',nl:'Shopify'}, desc:{en:'Storefronts and backend flows delivered for merchants who needed commerce and operations connected.',nl:'Webshops en backend-processen gebouwd voor ondernemers die commerce en operatie aan elkaar wilden koppelen.'}, bullets:{en:['Store setup & theme customization','Custom apps & checkout logic','Inventory & order sync','Odoo ↔ Shopify integration'],nl:['Winkelinrichting & thema-aanpassing','Maatwerk-apps & checkoutlogica','Voorraad- & ordersynchronisatie','Odoo ↔ Shopify-koppeling']} },
+  { cat:{en:'Platforms We Work On',nl:'Platformen waarmee we werken'}, icon:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/>', title:{en:'Zoho',nl:'Zoho'}, desc:{en:'Consulting and integration work delivered for organizations running Zoho alongside other systems.',nl:'Advies en integratiewerk voor organisaties die Zoho naast andere systemen gebruiken.'}, bullets:{en:['Functional consulting','Module configuration','Reporting & data extraction','Cross-system integration'],nl:['Functioneel advies','Module-configuratie','Rapportage & data-extractie','Koppeling tussen systemen']} },
   // AI
-  { cat:'AI Engineering', icon:'<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3.2"/>', title:'AI Integration', desc:'Sales, marketing and production automation, reading the data already inside your systems, not bolted on as a demo.', bullets:['AI sales & support agents','Marketing & lead-gen automation','Production & process automation','24/7 autonomous operations'] },
-  { cat:'AI Engineering', icon:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>', title:'AI Model Development', desc:'Building and fine-tuning models for specific business tasks, not just wiring up an off-the-shelf API.', bullets:['Custom & fine-tuned models','Model evaluation & benchmarking','Retrieval-augmented systems','Deployment & monitoring'] },
+  { cat:{en:'AI Engineering',nl:'AI Engineering'}, icon:'<path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M18.4 5.6l-2 2M7.6 16.4l-2 2"/><circle cx="12" cy="12" r="3.2"/>', title:{en:'AI Integration',nl:'AI-integratie'}, desc:{en:'Sales, marketing and production automation, reading the data already inside your systems, not bolted on as a demo.',nl:'Automatisering van sales, marketing en productie, gebaseerd op de data die al in je systemen zit, geen los demonstratiegadget.'}, bullets:{en:['AI sales & support agents','Marketing & lead-gen automation','Production & process automation','24/7 autonomous operations'],nl:['AI sales- & supportagents','Marketing- & leadgen-automatisering','Productie- & procesautomatisering','24/7 autonome bedrijfsprocessen']} },
+  { cat:{en:'AI Engineering',nl:'AI Engineering'}, icon:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>', title:{en:'AI Model Development',nl:'AI-modelontwikkeling'}, desc:{en:'Building and fine-tuning models for specific business tasks, not just wiring up an off-the-shelf API.',nl:'Bouwen en finetunen van modellen voor specifieke bedrijfstaken, niet zomaar een kant-en-klare API aansluiten.'}, bullets:{en:['Custom & fine-tuned models','Model evaluation & benchmarking','Retrieval-augmented systems','Deployment & monitoring'],nl:['Maatwerk- & gefinetunede modellen','Modelevaluatie & benchmarking','Retrieval-augmented systemen','Deployment & monitoring']} },
   // Infrastructure & Extension
-  { cat:'Infrastructure & Extension', icon:'<rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><circle cx="8" cy="7" r=".6" fill="currentColor"/><circle cx="8" cy="17" r=".6" fill="currentColor"/>', title:'Server Management', desc:'Systems run where you need them, cloud or on-premise, with the monitoring to keep them running.', bullets:['Cloud hosting & deployment','On-premise setup & hardening','Monitoring, backups & disaster recovery','Performance tuning & upgrades'] },
-  { cat:'Infrastructure & Extension', icon:'<circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.2 10.6 16M16.4 7.2 13.4 16M8.2 6h7.6"/>', title:'Cross-Platform Integration', desc:'Odoo, Shopify, Zoho and everything else talking to each other, cleanly and reliably.', bullets:['Third-party & custom API integrations','E-commerce & marketplace sync','Payment gateway & courier integrations','Data migration & sync pipelines'] },
-  { cat:'Infrastructure & Extension', icon:'<rect x="6" y="2.5" width="12" height="19" rx="2.2"/><path d="M11 18.2h2"/>', title:'App Development', desc:'Mobile and custom applications that extend your systems beyond the browser.', bullets:['Mobile apps for business workflows','Custom internal tools','Barcode / scanner & warehouse apps','Offline-capable field apps'] },
-  { cat:'Infrastructure & Extension', icon:'<rect x="3" y="4.5" width="18" height="15" rx="1.6"/><path d="M3 8.5h18M6.4 6.4h.01"/>', title:'Website Development', desc:'Websites and portals connected to the systems behind them, so content and commerce stay in sync.', bullets:['Corporate & e-commerce sites','Customer & vendor self-service portals','CMS & headless builds','SEO-ready technical setup'] },
+  { cat:{en:'Infrastructure & Extension',nl:'Infrastructuur & Uitbreiding'}, icon:'<rect x="4" y="4" width="16" height="6" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/><circle cx="8" cy="7" r=".6" fill="currentColor"/><circle cx="8" cy="17" r=".6" fill="currentColor"/>', title:{en:'Server Management',nl:'Serverbeheer'}, desc:{en:'Systems run where you need them, cloud or on-premise, with the monitoring to keep them running.',nl:'Systemen draaien waar jij ze nodig hebt, cloud of on-premise, met de monitoring om ze draaiend te houden.'}, bullets:{en:['Cloud hosting & deployment','On-premise setup & hardening','Monitoring, backups & disaster recovery','Performance tuning & upgrades'],nl:['Cloud hosting & deployment','On-premise opzet & beveiliging','Monitoring, back-ups & disaster recovery','Performance-tuning & upgrades']} },
+  { cat:{en:'Infrastructure & Extension',nl:'Infrastructuur & Uitbreiding'}, icon:'<circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.6 7.2 10.6 16M16.4 7.2 13.4 16M8.2 6h7.6"/>', title:{en:'Cross-Platform Integration',nl:'Platformoverstijgende integratie'}, desc:{en:'Odoo, Shopify, Zoho and everything else talking to each other, cleanly and reliably.',nl:'Odoo, Shopify, Zoho en al het andere dat met elkaar moet praten, netjes en betrouwbaar.'}, bullets:{en:['Third-party & custom API integrations','E-commerce & marketplace sync','Payment gateway & courier integrations','Data migration & sync pipelines'],nl:['API-koppelingen met derden & maatwerk','E-commerce- & marketplace-synchronisatie','Koppelingen met betaalproviders & vervoerders','Datamigratie & synchronisatiepijplijnen']} },
+  { cat:{en:'Infrastructure & Extension',nl:'Infrastructuur & Uitbreiding'}, icon:'<rect x="6" y="2.5" width="12" height="19" rx="2.2"/><path d="M11 18.2h2"/>', title:{en:'App Development',nl:'App-ontwikkeling'}, desc:{en:'Mobile and custom applications that extend your systems beyond the browser.',nl:'Mobiele en maatwerkapplicaties die je systemen verder brengen dan de browser.'}, bullets:{en:['Mobile apps for business workflows','Custom internal tools','Barcode / scanner & warehouse apps','Offline-capable field apps'],nl:['Mobiele apps voor bedrijfsprocessen','Interne maatwerktools','Barcode-/scanner- & magazijn-apps','Offline-bruikbare veldapps']} },
+  { cat:{en:'Infrastructure & Extension',nl:'Infrastructuur & Uitbreiding'}, icon:'<rect x="3" y="4.5" width="18" height="15" rx="1.6"/><path d="M3 8.5h18M6.4 6.4h.01"/>', title:{en:'Website Development',nl:'Websiteontwikkeling'}, desc:{en:'Websites and portals connected to the systems behind them, so content and commerce stay in sync.',nl:'Websites en portalen gekoppeld aan de systemen erachter, zodat content en commerce synchroon blijven.'}, bullets:{en:['Corporate & e-commerce sites','Customer & vendor self-service portals','CMS & headless builds','SEO-ready technical setup'],nl:['Corporate & e-commerce websites','Selfservice-portalen voor klanten & leveranciers','CMS- & headless-opzet','SEO-klare technische inrichting']} },
 ];
 
 const CLIENTS = [
-  { icon:'<rect x="3" y="8" width="18" height="12" rx="1.4"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 13h18"/>', headline:'One inventory view across every warehouse', title:'IT Distribution', loc:'Lommel, Belgium', modules:'Inventory · Sales · Purchase', desc:'A Belgium-based IT distributor moving stock across several warehouses needed one accurate view of inventory instead of separate spreadsheets per site. We consolidated sales, purchase and multi-warehouse inventory into a single Odoo instance, with reordering rules tied to real stock levels rather than manual checks.' },
-  { icon:'<path d="M6 9h11l-1 9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 9Z"/><path d="M17 9a3 3 0 0 0 3-3h-1"/><path d="M9 6V4M12 6V3M15 6V4"/>', headline:'Batch-to-bean traceability, built into production', title:'Coffee Manufacturing', loc:'Amsterdam, Netherlands', modules:'Manufacturing · Quality · Inventory', desc:'An Amsterdam coffee manufacturer needed production batches, raw-material stock and quality checks tracked in one place rather than on paper logs. We set up Odoo Manufacturing with linked quality checkpoints, so each batch is traceable back to its raw material lot.' },
-  { icon:'<path d="M12 3c3 2 5 5 5 9a5 5 0 0 1-10 0c0-4 2-7 5-9Z"/><path d="M12 12v8"/>', headline:'Customs-to-warehouse visibility across two countries', title:'Fruit Import–Export', loc:'India ↔ Vietnam', modules:'Purchase · Inventory · Logistics', desc:'A fruit import-export operation trading between India and Vietnam needed shipment, customs and stock-in-transit visibility across borders. We configured purchase and inventory flows to track goods from origin to warehouse, with landed-cost tracking built into each shipment.' },
-  { icon:'<path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M4 7l8 5 8-5M12 12v10"/>', headline:'Wholesale and retail, one shared stock room', title:'Ceramic B2B & B2C', loc:'India', modules:'Sales · eCommerce · Accounting', desc:'An Indian ceramics manufacturer sold to both retail customers and wholesale dealers through disconnected systems. We unified both channels, wholesale pricing rules and a retail-facing storefront, onto one Odoo instance with shared inventory and accounting.' },
-  { icon:'<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.2h2"/>', headline:'Till, stock and purchasing, finally talking', title:'Consumer Electronics Retail', loc:'United Arab Emirates', modules:'Point of Sale · Inventory · Purchase', desc:'A UAE-based phone retailer needed in-store sales, stock and supplier purchasing connected instead of reconciled by hand at closing time. We deployed Odoo Point of Sale linked directly to inventory and purchasing, so every sale updates stock and triggers reorder points automatically.' },
+  { icon:'<rect x="3" y="8" width="18" height="12" rx="1.4"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 13h18"/>', headline:{en:'One inventory view across every warehouse',nl:'Eén voorraadoverzicht voor elk magazijn'}, title:{en:'IT Distribution',nl:'IT-distributie'}, loc:{en:'Lommel, Belgium',nl:'Lommel, België'}, modules:{en:'Inventory · Sales · Purchase',nl:'Voorraad · Verkoop · Inkoop'}, desc:{en:'A Belgium-based IT distributor moving stock across several warehouses needed one accurate view of inventory instead of separate spreadsheets per site. We consolidated sales, purchase and multi-warehouse inventory into a single Odoo instance, with reordering rules tied to real stock levels rather than manual checks.',nl:'Een Belgische IT-distributeur die voorraad tussen meerdere magazijnen verplaatst, had één betrouwbaar voorraadoverzicht nodig in plaats van losse spreadsheets per locatie. We brachten verkoop, inkoop en voorraad over meerdere magazijnen samen in één Odoo-omgeving, met bestelregels gebaseerd op echte voorraadniveaus in plaats van handmatige controles.'} },
+  { icon:'<path d="M6 9h11l-1 9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 9Z"/><path d="M17 9a3 3 0 0 0 3-3h-1"/><path d="M9 6V4M12 6V3M15 6V4"/>', headline:{en:'Batch-to-bean traceability, built into production',nl:'Traceerbaarheid van batch tot boon, ingebouwd in productie'}, title:{en:'Coffee Manufacturing',nl:'Koffieproductie'}, loc:{en:'Amsterdam, Netherlands',nl:'Amsterdam, Nederland'}, modules:{en:'Manufacturing · Quality · Inventory',nl:'Productie · Kwaliteit · Voorraad'}, desc:{en:'An Amsterdam coffee manufacturer needed production batches, raw-material stock and quality checks tracked in one place rather than on paper logs. We set up Odoo Manufacturing with linked quality checkpoints, so each batch is traceable back to its raw material lot.',nl:'Een koffieproducent uit Amsterdam wilde productiebatches, grondstofvoorraad en kwaliteitscontroles op één plek bijhouden in plaats van op papier. We richtten Odoo Manufacturing in met gekoppelde kwaliteitscontrolepunten, zodat elke batch te herleiden is tot de grondstofpartij.'} },
+  { icon:'<path d="M12 3c3 2 5 5 5 9a5 5 0 0 1-10 0c0-4 2-7 5-9Z"/><path d="M12 12v8"/>', headline:{en:'Customs-to-warehouse visibility across two countries',nl:'Zicht van douane tot magazijn, over twee landen heen'}, title:{en:'Fruit Import–Export',nl:'Fruit import-export'}, loc:{en:'India ↔ Vietnam',nl:'India ↔ Vietnam'}, modules:{en:'Purchase · Inventory · Logistics',nl:'Inkoop · Voorraad · Logistiek'}, desc:{en:'A fruit import-export operation trading between India and Vietnam needed shipment, customs and stock-in-transit visibility across borders. We configured purchase and inventory flows to track goods from origin to warehouse, with landed-cost tracking built into each shipment.',nl:'Een fruit import-exportbedrijf dat handelt tussen India en Vietnam had grensoverschrijdend inzicht nodig in zendingen, douane en voorraad onderweg. We richtten inkoop- en voorraadprocessen in om goederen te volgen van herkomst tot magazijn, met kostprijsberekening per zending inbegrepen.'} },
+  { icon:'<path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M4 7l8 5 8-5M12 12v10"/>', headline:{en:'Wholesale and retail, one shared stock room',nl:'Groothandel en retail, één gedeelde voorraadruimte'}, title:{en:'Ceramic B2B & B2C',nl:'Keramiek B2B & B2C'}, loc:{en:'India',nl:'India'}, modules:{en:'Sales · eCommerce · Accounting',nl:'Verkoop · E-commerce · Boekhouding'}, desc:{en:'An Indian ceramics manufacturer sold to both retail customers and wholesale dealers through disconnected systems. We unified both channels, wholesale pricing rules and a retail-facing storefront, onto one Odoo instance with shared inventory and accounting.',nl:'Een Indiase keramiekfabrikant verkocht aan zowel particuliere klanten als groothandelaren via losstaande systemen. We brachten beide kanalen samen, groothandelsprijzen en een webshop voor consumenten, in één Odoo-omgeving met gedeelde voorraad en boekhouding.'} },
+  { icon:'<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.2h2"/>', headline:{en:'Till, stock and purchasing, finally talking',nl:'Kassa, voorraad en inkoop, eindelijk verbonden'}, title:{en:'Consumer Electronics Retail',nl:'Consumentenelektronica retail'}, loc:{en:'United Arab Emirates',nl:'Verenigde Arabische Emiraten'}, modules:{en:'Point of Sale · Inventory · Purchase',nl:'Kassasysteem · Voorraad · Inkoop'}, desc:{en:'A UAE-based phone retailer needed in-store sales, stock and supplier purchasing connected instead of reconciled by hand at closing time. We deployed Odoo Point of Sale linked directly to inventory and purchasing, so every sale updates stock and triggers reorder points automatically.',nl:'Een telefoonwinkel in de VAE wilde verkoop in de winkel, voorraad en inkoop bij leveranciers gekoppeld hebben in plaats van elke avond handmatig af te stemmen. We zetten Odoo Kassa (POS) op, rechtstreeks gekoppeld aan voorraad en inkoop, zodat elke verkoop de voorraad bijwerkt en automatisch bestelpunten activeert.'} },
 ];
 
 function svg(paths){ return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`; }
@@ -1044,9 +1490,9 @@ function renderServiceCard(s){
   return `<div class="card${s.badge?' core':''}">
     ${s.badge?`<span class="badge-core">${s.badge}</span>`:''}
     <div class="ico">${svg(s.icon)}</div>
-    <h3>${s.title}</h3>
-    <p>${s.desc}</p>
-    <ul>${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+    <h3>${s.title[currentLang]}</h3>
+    <p>${s.desc[currentLang]}</p>
+    <ul>${s.bullets[currentLang].map(b=>`<li>${b}</li>`).join('')}</ul>
   </div>`;
 }
 
@@ -1054,33 +1500,41 @@ function renderClientCard(c, i){
   return `<div class="case-card">
     <div>
       <span class="idx">0${i+1}</span>
-      <h3>${c.headline}</h3>
-      <span class="loc2">${c.title} · ${c.loc}</span>
-      <p>${c.desc}</p>
+      <h3>${c.headline[currentLang]}</h3>
+      <span class="loc2">${c.title[currentLang]} · ${c.loc[currentLang]}</span>
+      <p>${c.desc[currentLang]}</p>
     </div>
-    <div class="mods">${c.modules}</div>
+    <div class="mods">${c.modules[currentLang]}</div>
   </div>`;
 }
 
-// group services by category, preserving first-seen order
-const categories = [];
-SERVICES.forEach(s=>{ if(!categories.includes(s.cat)) categories.push(s.cat); });
-document.getElementById('servicesByCategory').innerHTML = categories.map(cat=>{
-  const items = SERVICES.filter(s=>s.cat===cat);
-  const gridClass = items.length===1 ? 'grid-1' : 'grid-3';
-  return `
-  <div class="cat-head"><h3>${cat}</h3><div class="line"></div></div>
-  <div class="${gridClass}" style="margin-bottom:8px;">${items.map(renderServiceCard).join('')}</div>
-`;
-}).join('');
+function renderServices(){
+  const categories = [];
+  SERVICES.forEach(s=>{ if(!categories.includes(s.cat.en)) categories.push(s.cat.en); });
+  document.getElementById('servicesByCategory').innerHTML = categories.map(catEn=>{
+    const items = SERVICES.filter(s=>s.cat.en===catEn);
+    const gridClass = items.length===1 ? 'grid-1' : 'grid-3';
+    return `
+    <div class="cat-head"><h3>${items[0].cat[currentLang]}</h3><div class="line"></div></div>
+    <div class="${gridClass}" style="margin-bottom:8px;">${items.map(renderServiceCard).join('')}</div>
+  `;
+  }).join('');
 
-document.getElementById('homeServicesPreview').innerHTML = [
-  SERVICES.find(s=>s.title==='Solution Consulting'),
-  SERVICES.find(s=>s.title==='Odoo'),
-  SERVICES.find(s=>s.title==='AI Model Development'),
-].map(renderServiceCard).join('');
+  document.getElementById('homeServicesPreview').innerHTML = [
+    SERVICES.find(s=>s.title.en==='Solution Consulting'),
+    SERVICES.find(s=>s.title.en==='Odoo'),
+    SERVICES.find(s=>s.title.en==='AI Model Development'),
+  ].map(renderServiceCard).join('');
+}
 
-document.getElementById('clientsGrid').innerHTML = CLIENTS.map(renderClientCard).join('');
+function renderClients(){
+  document.getElementById('homeCaseScroll') && (document.getElementById('homeCaseScroll').innerHTML = CLIENTS.map(renderClientCard).join(''));
+  document.getElementById('clientsGrid').innerHTML = CLIENTS.map(renderClientCard).join('');
+}
+
+renderServices();
+renderClients();
+
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 /* ============ ROUTING ============ */
@@ -1108,6 +1562,32 @@ document.getElementById('burgerBtn').addEventListener('click', ()=>{
   document.getElementById('siteNav').classList.toggle('open');
 });
 
+/* ============ LANGUAGE TOGGLE ============ */
+function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(I18N[lang][key] !== undefined) el.innerHTML = I18N[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(I18N[lang][key] !== undefined) el.setAttribute('placeholder', I18N[lang][key]);
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+
+  renderServices();
+  renderClients();
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-lang')));
+});
+
 /* ============ SCROLL REVEAL ============ */
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); observer.unobserve(e.target); } });
@@ -1128,19 +1608,19 @@ const chatInput = document.getElementById('chatInput');
 const chatSend = document.getElementById('chatSend');
 
 const CHAT_KB = [
-  { keys:['service','offer','do you do','what do you','help with','platform'], reply:"We work across four areas: <strong>Consulting &amp; Advisory</strong>, <strong>Platforms</strong> (Odoo, Shopify, Zoho), <strong>AI Engineering</strong>, and <strong>Infrastructure &amp; Extension</strong> (servers, integrations, apps, websites). Want details on one of these?", quick:['Platforms','AI Engineering','Pricing'] },
-  { keys:['odoo'], reply:"Odoo is one of the platforms we work on: implementation, custom development, and long-term support after go-live." },
-  { keys:['shopify'], reply:"We build and support Shopify storefronts: theme customization, custom apps, checkout logic, and syncing Shopify with systems like Odoo." },
-  { keys:['zoho'], reply:"We do consulting and integration work for teams running Zoho: configuration, reporting, and connecting it to other systems." },
-  { keys:['ai','chatbot','model','automation','automate'], reply:"AI Engineering covers sales &amp; support agents, marketing automation, production/process automation, and custom <strong>AI Model Development</strong> when off-the-shelf isn't enough. The goal is parts of the business that run without you." },
-  { keys:['price','cost','pricing','budget','how much','rate','subscription'], reply:"Three ways to pay: <strong>per hour</strong>, <strong>per project</strong> (fixed scope and price), or <strong>zero upfront</strong>: we build and hand over the solution, you pay a monthly subscription instead. Year one is billed annually to cover the build." },
-  { keys:['scope','doable','possible','can you build','feasib'], reply:"Describe the problem on the <a href='#/contact' style='color:var(--amber);'>Contact page</a> and we'll tell you honestly whether it's doable, roughly how, and which pricing model fits." },
-  { keys:['contact','email','phone','reach','talk to someone','call'], reply:"You can reach us at <a href='mailto:hello@odexa.eu' style='color:var(--amber);'>hello@odexa.eu</a> or use the <a href='#/contact' style='color:var(--amber);'>Contact page</a>. We usually reply within a business day." },
-  { keys:['team','who are you','founder','raj','gor'], reply:"Odexa is run by Raj (technology) and Gor (business &amp; growth), plus a small team of five to six working across live projects." },
-  { keys:['experience','how long','since when','history','years'], reply:"Odoo experience since 2021, working independently since August 2023, and 25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering." },
-  { keys:['process','how does it work','engagement','how do you work'], reply:"Five stages: Discover → Scope → Build → Launch → Operate. Not every project needs all five; a support retainer can start at stage 4." },
-  { keys:['location','where are you','based','remote'], reply:"We have setups in Lommel, Belgium and in India, and work remote-first with clients across Europe, the Middle East and Asia." },
-  { keys:['client','case stud','reference','example','portfolio'], reply:"Take a look at the <a href='#/clients' style='color:var(--amber);'>Clients page</a>: five real engagements across distribution, manufacturing, trade, retail and wholesale." },
+  { keys:['service','offer','do you do','what do you','help with','platform','dienst','wat doen','platform'], reply:{en:"We work across four areas: <strong>Consulting &amp; Advisory</strong>, <strong>Platforms</strong> (Odoo, Shopify, Zoho), <strong>AI Engineering</strong>, and <strong>Infrastructure &amp; Extension</strong> (servers, integrations, apps, websites). Want details on one of these?",nl:"We werken binnen vier gebieden: <strong>Consulting &amp; Advies</strong>, <strong>Platformen</strong> (Odoo, Shopify, Zoho), <strong>AI Engineering</strong>, en <strong>Infrastructuur &amp; Uitbreiding</strong> (servers, koppelingen, apps, websites). Wil je meer weten over één daarvan?"}, quick:{en:['Platforms','AI Engineering','Pricing'],nl:['Platformen','AI Engineering','Prijzen']} },
+  { keys:['odoo'], reply:{en:"Odoo is one of the platforms we work on: implementation, custom development, and long-term support after go-live.",nl:"Odoo is een van de platformen waar we mee werken: implementatie, maatwerkontwikkeling, en langdurige support na livegang."} },
+  { keys:['shopify'], reply:{en:"We build and support Shopify storefronts: theme customization, custom apps, checkout logic, and syncing Shopify with systems like Odoo.",nl:"We bouwen en ondersteunen Shopify-webshops: thema-aanpassing, maatwerk-apps, checkoutlogica, en het koppelen van Shopify met systemen zoals Odoo."} },
+  { keys:['zoho'], reply:{en:"We do consulting and integration work for teams running Zoho: configuration, reporting, and connecting it to other systems.",nl:"We doen advies- en integratiewerk voor teams die Zoho gebruiken: configuratie, rapportage, en koppeling met andere systemen."} },
+  { keys:['ai','chatbot','model','automation','automate','automatisering'], reply:{en:"AI Engineering covers sales &amp; support agents, marketing automation, production/process automation, and custom <strong>AI Model Development</strong> when off-the-shelf isn't enough. The goal is parts of the business that run without you.",nl:"AI Engineering omvat sales- &amp; supportagents, marketingautomatisering, productie-/procesautomatisering, en maatwerk <strong>AI-modelontwikkeling</strong> wanneer kant-en-klaar niet volstaat. Het doel: onderdelen van je bedrijf die zonder jou draaien."} },
+  { keys:['price','cost','pricing','budget','how much','rate','subscription','prijs','prijzen','kosten'], reply:{en:"Three ways to pay: <strong>per hour</strong>, <strong>per project</strong> (fixed scope and price), or <strong>zero upfront</strong>: we build and hand over the solution, you pay a monthly subscription instead.",nl:"Drie manieren om te betalen: <strong>per uur</strong>, <strong>per project</strong> (vaste scope en prijs), of <strong>geen kosten vooraf</strong>: wij bouwen en dragen de oplossing over, jij betaalt een maandelijks abonnement."} },
+  { keys:['scope','doable','possible','can you build','feasib','haalbaar','mogelijk'], reply:{en:"Describe the problem on the <a href='#/contact' style='color:var(--amber);'>Contact page</a> and we'll tell you honestly whether it's doable, roughly how, and which pricing model fits.",nl:"Beschrijf het probleem op de <a href='#/contact' style='color:var(--amber);'>contactpagina</a> en we vertellen je eerlijk of het haalbaar is, ruwweg hoe, en welk prijsmodel past."} },
+  { keys:['contact','email','phone','reach','talk to someone','call','bellen'], reply:{en:"You can reach us at <a href='mailto:hello@odexa.eu' style='color:var(--amber);'>hello@odexa.eu</a> or use the <a href='#/contact' style='color:var(--amber);'>Contact page</a>. We usually reply within a business day.",nl:"Je kan ons bereiken via <a href='mailto:hello@odexa.eu' style='color:var(--amber);'>hello@odexa.eu</a> of via de <a href='#/contact' style='color:var(--amber);'>contactpagina</a>. We reageren meestal binnen één werkdag."} },
+  { keys:['team','who are you','founder','raj','gor','oprichter'], reply:{en:"Odexa is run by Raj (technology) and Gor (business &amp; growth), plus a small team of five to six working across live projects.",nl:"Odexa wordt gerund door Raj (technologie) en Gor (business &amp; groei), plus een klein team van vijf tot zes mensen op actieve projecten."} },
+  { keys:['experience','how long','since when','history','years','ervaring'], reply:{en:"Odoo experience since 2021, working independently since August 2023, and 25+ projects delivered across Odoo, Shopify, Zoho and AI Engineering.",nl:"Odoo-ervaring sinds 2021, zelfstandig werkzaam sinds augustus 2023, en 25+ projecten opgeleverd binnen Odoo, Shopify, Zoho en AI Engineering."} },
+  { keys:['process','how does it work','engagement','how do you work','proces'], reply:{en:"Five stages: Discover → Scope → Build → Launch → Operate. Not every project needs all five; a support retainer can start at stage 4.",nl:"Vijf fases: Verkennen → Scope → Bouwen → Livegang → Beheer. Niet elk project heeft alle vijf nodig; een supportabonnement kan bij fase 4 beginnen."} },
+  { keys:['location','where are you','based','remote','locatie','waar'], reply:{en:"We're based in Lommel, Belgium, and work remote-first with clients across Europe, the Middle East and Asia.",nl:"We zijn gevestigd in Lommel, België, en werken remote-first met klanten in Europa, het Midden-Oosten en Azië."} },
+  { keys:['client','case stud','reference','example','portfolio','klant'], reply:{en:"Take a look at the <a href='#/clients' style='color:var(--amber);'>Clients page</a>: five real engagements across distribution, manufacturing, trade, retail and wholesale.",nl:"Bekijk de <a href='#/clients' style='color:var(--amber);'>klantenpagina</a>: vijf echte trajecten binnen distributie, productie, handel, retail en groothandel."} },
 ];
 
 function chatAddMsg(text, who){
@@ -1168,16 +1648,19 @@ function chatAddQuick(options){
 function chatCaptureForm(){
   const wrap = document.createElement('div');
   wrap.className = 'chat-msg bot';
-  wrap.innerHTML = `I don't have a canned answer for that. Leave your email and we'll get back to you personally.
+  const t = currentLang === 'nl'
+    ? { intro:"Daar heb ik geen kant-en-klaar antwoord op. Laat je e-mail achter en we nemen persoonlijk contact op.", placeholder:"jij@bedrijf.nl", btn:"Verstuur mijn e-mail", thanks:"Bedankt, we nemen contact op via " }
+    : { intro:"I don't have a canned answer for that. Leave your email and we'll get back to you personally.", placeholder:"you@company.com", btn:"Send my email", thanks:"Thanks, we'll follow up at " };
+  wrap.innerHTML = `${t.intro}
     <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;">
-      <input type="email" placeholder="you@company.com" style="padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-family:var(--body);">
-      <button style="padding:8px 10px;border-radius:8px;background:var(--amber);color:var(--paper);font-family:var(--mono);font-size:12px;">Send my email</button>
+      <input type="email" placeholder="${t.placeholder}" style="padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-family:var(--body);">
+      <button style="padding:8px 10px;border-radius:8px;background:var(--amber);color:var(--paper);font-family:var(--mono);font-size:12px;">${t.btn}</button>
     </div>`;
   const btn = wrap.querySelector('button');
   const input = wrap.querySelector('input');
   btn.addEventListener('click', ()=>{
     if(input.value.includes('@')){
-      wrap.querySelector('div').innerHTML = "Thanks, we'll follow up at " + input.value + ".";
+      wrap.querySelector('div').innerHTML = t.thanks + input.value + ".";
     } else {
       input.style.borderColor = 'var(--amber)';
     }
@@ -1194,8 +1677,8 @@ function chatHandle(text){
   const hit = CHAT_KB.find(k => k.keys.some(kw => lower.includes(kw)));
   setTimeout(()=>{
     if(hit){
-      chatAddMsg(hit.reply, 'bot');
-      if(hit.quick) chatAddQuick(hit.quick);
+      chatAddMsg(hit.reply[currentLang], 'bot');
+      if(hit.quick) chatAddQuick(hit.quick[currentLang]);
     } else {
       chatCaptureForm();
     }
@@ -1207,8 +1690,14 @@ chatToggle.addEventListener('click', ()=>{
   chatPanel.classList.toggle('open');
   chatToggle.classList.toggle('open');
   if(opening && chatBody.children.length === 0){
-    chatAddMsg("Hi. I can answer quick questions about what we do, our platforms, or how to reach us. What would you like to know?", 'bot');
-    chatAddQuick(['What do you do?','Pricing','Is this doable?','Contact']);
+    const greet = currentLang === 'nl'
+      ? "Hoi. Ik kan snelle vragen beantwoorden over wat we doen, onze platformen, of hoe je ons bereikt. Wat wil je weten?"
+      : "Hi. I can answer quick questions about what we do, our platforms, or how to reach us. What would you like to know?";
+    const quick = currentLang === 'nl'
+      ? ['Wat doen jullie?','Prijzen','Is dit haalbaar?','Contact']
+      : ['What do you do?','Pricing','Is this doable?','Contact'];
+    chatAddMsg(greet, 'bot');
+    chatAddQuick(quick);
   }
 });
 
