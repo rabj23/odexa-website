@@ -107,25 +107,12 @@ header.site-nav{
   align-items:center;
   gap:10px;
   font-family:var(--display);
-  font-weight:700;
-  font-size:20px;
+  font-weight:800;
+  font-size:24px;
+  letter-spacing:-0.02em;
+  color:var(--amber);
+  text-transform:lowercase;
 }
-.brand .mark{
-  width:30px;height:30px;
-  border-radius:7px;
-  background:var(--paper-raised);
-  box-shadow:inset 0 0 0 1px var(--line);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr;
-  gap:2px;
-  padding:5px;
-  flex-shrink:0;
-}
-.brand .mark span{background:var(--amber);border-radius:1px;}
-.brand .mark span:nth-child(2){background:var(--teal);}
-.brand .mark span:nth-child(3){background:var(--teal);}
-.brand .mark span:nth-child(4){background:var(--amber);}
 
 nav.links{
   display:flex;
@@ -709,7 +696,6 @@ footer{
 <header class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="#/home" class="brand">
-      <span class="mark"><span></span><span></span><span></span><span></span></span>
       Odexa
     </a>
     <nav class="links" id="navLinks">
